@@ -8,6 +8,7 @@
 import Cocoa
 import SwiftUI
 import Combine
+import UserNotifications
 
 @MainActor
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -33,6 +34,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         checkPermissions()
+        checkNotificationPermission()
         setupServices()
         setupViewModels()
         setupMenuBar()
@@ -52,6 +54,48 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     alert.addButton(withTitle: "OK")
                     alert.runModal()
                 }
+            }
+        }
+    }
+
+    private func checkNotificationPermission() {
+        UNUserNotificationCenter.current().getNotificationSettings { settings in
+            DispatchQueue.main.async {
+                if settings.authorizationStatus == .notDetermined {
+                    // 権限未決定の場合、リクエスト
+                    UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { granted, error in
+                        if let error = error {
+                            AppLogger.recording.error("Notification authorization error: \(error.localizedDescription)")
+                        }
+
+                        if !granted {
+                            DispatchQueue.main.async {
+                                self.showNotificationPermissionAlert()
+                            }
+                        }
+                    }
+                } else if settings.authorizationStatus == .denied {
+                    // 拒否されている場合、システム環境設定を開くよう促す
+                    self.showNotificationPermissionAlert()
+                }
+            }
+        }
+    }
+
+    private func showNotificationPermissionAlert() {
+        let alert = NSAlert()
+        alert.messageText = "通知へのアクセスが必要です"
+        alert.informativeText = "VoiceCaptureは録音完了や文字起こし完了を通知するために、通知の送信が必要です。システム環境設定で通知を許可してください。"
+        alert.alertStyle = .informational
+        alert.addButton(withTitle: "システム環境設定を開く")
+        alert.addButton(withTitle: "後で")
+
+        let response = alert.runModal()
+
+        if response == .alertFirstButtonReturn {
+            // システム環境設定の通知セクションを開く
+            if let url = URL(string: "x-apple.systempreferences:com.apple.preference.notifications") {
+                NSWorkspace.shared.open(url)
             }
         }
     }
