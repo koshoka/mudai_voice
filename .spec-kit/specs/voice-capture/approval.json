@@ -1,0 +1,135 @@
+{
+  "feature_name": "voice-capture",
+  "created_at": "2025-10-03T19:15:00+09:00",
+  "updated_at": "2025-10-03T19:15:00+09:00",
+  "current_phase": "plan",
+  "phases": {
+    "specify": {
+      "status": "completed",
+      "completed_at": "2025-10-03T19:15:00+09:00",
+      "approved_by": "Development Team",
+      "notes": "仕様定義完了。MVPスコープを明確化。"
+    },
+    "plan": {
+      "status": "completed",
+      "completed_at": "2025-10-03T19:15:00+09:00",
+      "approved_by": "Development Team",
+      "notes": "MLX Swift採用を決定。技術計画完了。"
+    },
+    "tasks": {
+      "status": "pending",
+      "completed_at": null,
+      "approved_by": null,
+      "notes": "Phase 1-4のタスク分解待ち"
+    },
+    "code": {
+      "status": "pending",
+      "completed_at": null,
+      "approved_by": null,
+      "notes": "実装開始待ち"
+    }
+  },
+  "technical_decisions": {
+    "tech_stack": {
+      "language": "Swift 5.9+",
+      "frameworks": [
+        "SwiftUI",
+        "AppKit",
+        "AVFoundation",
+        "MLX Swift"
+      ],
+      "platform": "macOS 12.0+",
+      "architecture": "MVVM + Services"
+    },
+    "key_decisions": [
+      {
+        "decision": "MLX Swift採用（選択肢A）",
+        "rationale": "Apple Silicon専用最適化、ネイティブSwift実装",
+        "alternatives": [
+          "Python Bridge",
+          "whisper.cpp"
+        ],
+        "decided_at": "2025-10-03"
+      },
+      {
+        "decision": "Whisper mediumモデル使用",
+        "rationale": "精度とパフォーマンスのバランス",
+        "alternatives": [
+          "small（速度優先）",
+          "large（精度優先）"
+        ],
+        "decided_at": "2025-10-03"
+      }
+    ]
+  },
+  "milestones": [
+    {
+      "name": "M1: Phase 1完了",
+      "target_date": "2025-10-06",
+      "status": "pending",
+      "deliverables": [
+        "録音機能",
+        "WAV保存",
+        "視覚的フィードバック"
+      ]
+    },
+    {
+      "name": "M2: Phase 2完了",
+      "target_date": "2025-10-08",
+      "status": "pending",
+      "deliverables": [
+        "ホットキー機能",
+        "設定画面"
+      ]
+    },
+    {
+      "name": "M3: Phase 3完了",
+      "target_date": "2025-10-13",
+      "status": "pending",
+      "deliverables": [
+        "MLX Swift統合",
+        "文字起こし機能"
+      ]
+    },
+    {
+      "name": "M4: MVP完成",
+      "target_date": "2025-10-15",
+      "status": "pending",
+      "deliverables": [
+        "全機能統合",
+        "テスト完了"
+      ]
+    }
+  ],
+  "risks": [
+    {
+      "id": "R1",
+      "description": "MLX SwiftのWhisperサポート不完全",
+      "impact": "high",
+      "probability": "medium",
+      "mitigation": "Phase 3初期にGo/No-Go判断、Python Bridgeフォールバック準備",
+      "status": "active"
+    },
+    {
+      "id": "R2",
+      "description": "文字起こし速度が要件未達",
+      "impact": "medium",
+      "probability": "low",
+      "mitigation": "MLX最適化活用、モデルサイズ調整",
+      "status": "monitoring"
+    },
+    {
+      "id": "R3",
+      "description": "メモリ使用量過多",
+      "impact": "medium",
+      "probability": "medium",
+      "mitigation": "ストリーミング録音、定期的メモリ解放",
+      "status": "monitoring"
+    }
+  ],
+  "next_steps": [
+    "Phase 1実装開始（Xcodeプロジェクト作成）",
+    "AppDelegate.swift実装",
+    "RecordingViewModel実装"
+  ]
+}
