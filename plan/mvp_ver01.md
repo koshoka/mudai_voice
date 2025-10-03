@@ -1,3 +1,4 @@
+※この
 # VoiceCapture MVP開発仕様書
 
 ## プロジェクト概要

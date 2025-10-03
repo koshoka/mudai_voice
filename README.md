@@ -86,13 +86,30 @@ mudai_voice/
 
 ## 開発状況
 
+**[詳細な進捗状況はPROGRESS.mdを参照](PROGRESS.md)**
+
 - [x] プロジェクト計画完了
 - [x] 技術スタック決定（MLX Swift採用）
 - [x] 詳細実装計画作成
-- [ ] Phase 1: 基本録音機能
-- [ ] Phase 2: ホットキーと設定
+- [x] Phase 1: 基本録音機能 - 完了・動作確認済み
+- [ ] Phase 2: ホットキーと設定 - 次のステップ
 - [ ] Phase 3: MLX Swift統合
 - [ ] Phase 4: UX改善
+
+### Phase 1完了内容（2025-10-03）
+
+- [x] Xcodeプロジェクト作成
+- [x] メニューバーアプリ実装
+- [x] 録音機能（AVAudioRecorder）
+- [x] WAV形式保存（サンドボックスコンテナ内）
+- [x] リアルタイム音声レベルメーター
+- [x] 録音タイマー（mm:ss）
+- [x] メニューバーアイコン動的変更
+- [x] MVVM + Servicesアーキテクチャ
+- [x] マイク・通知権限管理
+- [x] 録音完了通知
+
+**実録音テスト**: 正常動作確認済み（20251003_222620.wav）
 
 ## 主要な技術的決定
 
@@ -118,6 +135,13 @@ mudai_voice/
 
 ## ドキュメント
 
+### 進捗管理
+- **[PROGRESS.md](PROGRESS.md)** - 実装進捗の単一情報源（SSOT）
+  - チェックリスト形式
+  - 動作確認済み項目のマーク
+  - 技術的課題と解決策
+  - 次のアクション
+
 ### 仕様書
 - [機能仕様書](.spec-kit/specs/voice-capture/specification.md)
 - [技術計画書](.spec-kit/specs/voice-capture/technical-plan.md)
@@ -129,6 +153,9 @@ mudai_voice/
   - 完全なコード例（5つのサービス実装）
   - テスト戦略とチェックリスト
   - リスク分析と対策
+
+### 完了記録
+- [Phase 1完了記録](VoiceCapture/plan/20251003_phase1_completion.md)
 
 ### 技術調査
 - [MLX Swift技術調査](docs/mlx_swift_investigation.md)
@@ -162,4 +189,5 @@ TBD
 ---
 
 **最終更新**: 2025-10-03
-**バージョン**: 0.1.0 (計画フェーズ)
+**バージョン**: 0.2.0 (Phase 1完了)
+**リポジトリ**: https://github.com/koshoka/mudai_voice
