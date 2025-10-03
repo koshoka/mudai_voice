@@ -7,19 +7,85 @@
 
 import Cocoa
 import SwiftUI
+import Combine
 
+@MainActor
 class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK: - Properties
 
     private var statusItem: NSStatusItem?
+    private var recordingMenuItem: NSMenuItem?
+
+    // Services
+    private var audioRecordingService: AudioRecordingServiceProtocol!
+    private var fileStorageService: FileStorageServiceProtocol!
+    private var notificationService: NotificationServiceProtocol!
+    private var transcriptionService: TranscriptionServiceProtocol!
+
+    // ViewModels
+    private var recordingViewModel: RecordingViewModel!
+    private var transcriptionViewModel: TranscriptionViewModel!
+
+    // Combine
+    private var cancellables = Set<AnyCancellable>()
 
     // MARK: - Application Lifecycle
 
     func applicationDidFinishLaunching(_ notification: Notification) {
+        checkPermissions()
+        setupServices()
+        setupViewModels()
         setupMenuBar()
+        observeRecordingState()
     }
 
     // MARK: - Setup
+
+    private func checkPermissions() {
+        PermissionsManager.shared.requestMicrophonePermission { granted in
+            if !granted {
+                DispatchQueue.main.async {
+                    let alert = NSAlert()
+                    alert.messageText = "マイクへのアクセスが必要です"
+                    alert.informativeText = "VoiceCaptureは録音機能のためにマイクへのアクセスが必要です。システム環境設定でマイクへのアクセスを許可してください。"
+                    alert.alertStyle = .warning
+                    alert.addButton(withTitle: "OK")
+                    alert.runModal()
+                }
+            }
+        }
+    }
+
+    private func setupServices() {
+        audioRecordingService = AudioRecordingService()
+        fileStorageService = FileStorageService()
+        notificationService = NotificationService()
+        transcriptionService = TranscriptionService()
+    }
+
+    private func setupViewModels() {
+        transcriptionViewModel = TranscriptionViewModel(
+            transcriptionService: transcriptionService,
+            fileStorageService: fileStorageService,
+            notificationService: notificationService
+        )
+
+        recordingViewModel = RecordingViewModel(
+            audioService: audioRecordingService,
+            fileStorageService: fileStorageService,
+            notificationService: notificationService,
+            transcriptionViewModel: transcriptionViewModel
+        )
+    }
+
+    private func observeRecordingState() {
+        recordingViewModel.$isRecording
+            .sink { [weak self] isRecording in
+                self?.updateMenuBarIcon(isRecording: isRecording)
+                self?.updateMenuItems(isRecording: isRecording)
+            }
+            .store(in: &cancellables)
+    }
 
     private func setupMenuBar() {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
@@ -40,13 +106,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let menu = NSMenu()
 
         // 録音開始/停止
-        let recordingItem = NSMenuItem(
+        recordingMenuItem = NSMenuItem(
             title: "録音開始",
             action: #selector(toggleRecording),
             keyEquivalent: ""
         )
-        recordingItem.target = self
-        menu.addItem(recordingItem)
+        recordingMenuItem?.target = self
+        menu.addItem(recordingMenuItem!)
 
         menu.addItem(NSMenuItem.separator())
 
@@ -102,25 +168,40 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem?.menu = menu
     }
 
+    private func updateMenuBarIcon(isRecording: Bool) {
+        guard let button = statusItem?.button else { return }
+
+        let iconName = isRecording ? "mic.circle.fill" : "mic.fill"
+        button.image = NSImage(systemSymbolName: iconName, accessibilityDescription: "VoiceCapture")
+        button.image?.isTemplate = true
+    }
+
+    private func updateMenuItems(isRecording: Bool) {
+        recordingMenuItem?.title = isRecording ? "録音停止" : "録音開始"
+    }
+
     // MARK: - Actions
 
     @objc private func toggleRecording() {
-        // TODO: 録音機能の実装
-        print("録音開始/停止がクリックされました")
+        Task { @MainActor in
+            await recordingViewModel.toggleRecording()
+        }
     }
 
     @objc private func openLastRecording() {
-        // TODO: 最後の録音を開く機能の実装
-        print("最後の録音を開くがクリックされました")
+        Task { @MainActor in
+            await recordingViewModel.openLastRecording()
+        }
     }
 
     @objc private func openLastTranscription() {
-        // TODO: 最後の文字起こしを開く機能の実装
-        print("最後の文字起こしを開くがクリックされました")
+        Task { @MainActor in
+            await recordingViewModel.openLastTranscription()
+        }
     }
 
     @objc private func openSettings() {
-        // TODO: 設定画面の実装
+        // TODO: 設定画面の実装（Phase 2）
         print("設定がクリックされました")
     }
 
