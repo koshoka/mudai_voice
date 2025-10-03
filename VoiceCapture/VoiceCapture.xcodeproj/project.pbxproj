@@ -21,6 +21,14 @@
 		4B781D152E8FF8B900B38203 /* FileStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B781CFD2E8FF8B900B38203 /* FileStorageService.swift */; };
 		4B9891172E8FFE7600409927 /* PermissionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9891162E8FFE7600409927 /* PermissionsManager.swift */; };
 		4B9891192E8FFEAC00409927 /* RecordingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9891182E8FFEAC00409927 /* RecordingViewModel.swift */; };
+		4BE0C9A02E90154200984A24 /* KeyboardShortcuts+Names.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0C99F2E90154200984A24 /* KeyboardShortcuts+Names.swift */; };
+		4BE0C9A22E90155E00984A24 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0C9A12E90155E00984A24 /* SettingsViewModel.swift */; };
+		4BE0C9A42E90157100984A24 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0C9A32E90157100984A24 /* SettingsView.swift */; };
+		4BE0C9A72E9015AD00984A24 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 4BE0C9A62E9015AD00984A24 /* KeyboardShortcuts */; };
+		4BE0C9AA2E9024C400984A24 /* WhisperKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4BE0C9A92E9024C400984A24 /* WhisperKit */; };
+		4BE0C9AC2E9025D000984A24 /* TranscriptionServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0C9AB2E9025D000984A24 /* TranscriptionServiceProtocol.swift */; };
+		4BE0C9AE2E9026E100984A24 /* TranscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0C9AD2E9026E100984A24 /* TranscriptionService.swift */; };
+		4BE0C9B02E902BBF00984A24 /* AudioDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0C9AF2E902BBF00984A24 /* AudioDevice.swift */; };
 		A1000001000000000000001 /* VoiceCaptureApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000001000000000000001 /* VoiceCaptureApp.swift */; };
 		A1000002000000000000001 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000002000000000000001 /* AppDelegate.swift */; };
 		A1000003000000000000001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2000003000000000000001 /* Assets.xcassets */; };
@@ -41,6 +49,12 @@
 		4B781D062E8FF8B900B38203 /* TranscriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriptionViewModel.swift; sourceTree = "<group>"; };
 		4B9891162E8FFE7600409927 /* PermissionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsManager.swift; sourceTree = "<group>"; };
 		4B9891182E8FFEAC00409927 /* RecordingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingViewModel.swift; sourceTree = "<group>"; };
+		4BE0C99F2E90154200984A24 /* KeyboardShortcuts+Names.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "KeyboardShortcuts+Names.swift"; path = "Extensions/KeyboardShortcuts+Names.swift"; sourceTree = "<group>"; };
+		4BE0C9A12E90155E00984A24 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsViewModel.swift; path = ViewModels/SettingsViewModel.swift; sourceTree = "<group>"; };
+		4BE0C9A32E90157100984A24 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = Views/Settings/SettingsView.swift; sourceTree = "<group>"; };
+		4BE0C9AB2E9025D000984A24 /* TranscriptionServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriptionServiceProtocol.swift; sourceTree = "<group>"; };
+		4BE0C9AD2E9026E100984A24 /* TranscriptionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriptionService.swift; sourceTree = "<group>"; };
+		4BE0C9AF2E902BBF00984A24 /* AudioDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioDevice.swift; sourceTree = "<group>"; };
 		A0000001000000000000001 /* VoiceCapture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VoiceCapture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2000001000000000000001 /* VoiceCaptureApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceCaptureApp.swift; sourceTree = "<group>"; };
 		A2000002000000000000001 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -54,6 +68,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BE0C9AA2E9024C400984A24 /* WhisperKit in Frameworks */,
+				4BE0C9A72E9015AD00984A24 /* KeyboardShortcuts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +79,7 @@
 		4B781CF72E8FF8B900B38203 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4BE0C9AF2E902BBF00984A24 /* AudioDevice.swift */,
 				4B781CF52E8FF8B900B38203 /* AudioSettings.swift */,
 				4B781CF62E8FF8B900B38203 /* Recording.swift */,
 			);
@@ -72,6 +89,7 @@
 		4B781CFB2E8FF8B900B38203 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				4BE0C9AB2E9025D000984A24 /* TranscriptionServiceProtocol.swift */,
 				4B781CF82E8FF8B900B38203 /* AudioRecordingServiceProtocol.swift */,
 				4B781CF92E8FF8B900B38203 /* FileStorageServiceProtocol.swift */,
 				4B781CFA2E8FF8B900B38203 /* NotificationServiceProtocol.swift */,
@@ -82,6 +100,7 @@
 		4B781CFF2E8FF8B900B38203 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				4BE0C9AD2E9026E100984A24 /* TranscriptionService.swift */,
 				4B781CFB2E8FF8B900B38203 /* Protocols */,
 				4B781CFC2E8FF8B900B38203 /* AudioRecordingService.swift */,
 				4B781CFD2E8FF8B900B38203 /* FileStorageService.swift */,
@@ -121,6 +140,9 @@
 		A4000002000000000000001 /* VoiceCapture */ = {
 			isa = PBXGroup;
 			children = (
+				4BE0C99F2E90154200984A24 /* KeyboardShortcuts+Names.swift */,
+				4BE0C9A12E90155E00984A24 /* SettingsViewModel.swift */,
+				4BE0C9A32E90157100984A24 /* SettingsView.swift */,
 				A2000001000000000000001 /* VoiceCaptureApp.swift */,
 				A2000002000000000000001 /* AppDelegate.swift */,
 				4B781CF72E8FF8B900B38203 /* Models */,
@@ -186,6 +208,10 @@
 				Base,
 			);
 			mainGroup = A4000001000000000000001;
+			packageReferences = (
+				4BE0C9A52E9015AD00984A24 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
+				4BE0C9A82E9024C400984A24 /* XCRemoteSwiftPackageReference "WhisperKit" */,
+			);
 			productRefGroup = A4000003000000000000001 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -227,6 +253,12 @@
 				4B781D152E8FF8B900B38203 /* FileStorageService.swift in Sources */,
 				A1000001000000000000001 /* VoiceCaptureApp.swift in Sources */,
 				A1000002000000000000001 /* AppDelegate.swift in Sources */,
+				4BE0C9AE2E9026E100984A24 /* TranscriptionService.swift in Sources */,
+				4BE0C9AC2E9025D000984A24 /* TranscriptionServiceProtocol.swift in Sources */,
+				4BE0C9B02E902BBF00984A24 /* AudioDevice.swift in Sources */,
+				4BE0C9A02E90154200984A24 /* KeyboardShortcuts+Names.swift in Sources */,
+				4BE0C9A22E90155E00984A24 /* SettingsViewModel.swift in Sources */,
+				4BE0C9A42E90157100984A24 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,7 +319,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -346,7 +378,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -370,6 +402,7 @@
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = YES;
+				ENABLE_USER_SELECTED_FILES = readwrite;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = VoiceCapture/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -400,6 +433,7 @@
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = YES;
+				ENABLE_USER_SELECTED_FILES = readwrite;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = VoiceCapture/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -437,6 +471,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4BE0C9A52E9015AD00984A24 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/KeyboardShortcuts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.4.0;
+			};
+		};
+		4BE0C9A82E9024C400984A24 /* XCRemoteSwiftPackageReference "WhisperKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/argmaxinc/WhisperKit";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4BE0C9A62E9015AD00984A24 /* KeyboardShortcuts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4BE0C9A52E9015AD00984A24 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
+			productName = KeyboardShortcuts;
+		};
+		4BE0C9A92E9024C400984A24 /* WhisperKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4BE0C9A82E9024C400984A24 /* XCRemoteSwiftPackageReference "WhisperKit" */;
+			productName = WhisperKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A9000001000000000000001 /* Project object */;
 }

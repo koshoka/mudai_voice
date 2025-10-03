@@ -9,6 +9,8 @@ import Cocoa
 import SwiftUI
 import Combine
 import UserNotifications
+// TODO: KeyboardShortcuts SPM追加後にコメント解除
+import KeyboardShortcuts
 
 @MainActor
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -16,6 +18,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     private var statusItem: NSStatusItem?
     private var recordingMenuItem: NSMenuItem?
+    private var settingsWindow: NSWindow?
 
     // Services
     private var audioRecordingService: AudioRecordingServiceProtocol!
@@ -39,6 +42,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         setupViewModels()
         setupMenuBar()
         observeRecordingState()
+        // TODO: KeyboardShortcuts SPM追加後にコメント解除
+        setupKeyboardShortcuts()
     }
 
     // MARK: - Setup
@@ -130,6 +135,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
             .store(in: &cancellables)
     }
+
+    // TODO: KeyboardShortcuts SPM追加後にコメント解除
+    
+    private func setupKeyboardShortcuts() {
+        KeyboardShortcuts.onKeyUp(for: .toggleRecording) { [weak self] in
+            Task { @MainActor in
+                await self?.recordingViewModel.toggleRecording()
+            }
+        }
+    }
+    
 
     private func setupMenuBar() {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
@@ -245,8 +261,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @objc private func openSettings() {
-        // TODO: 設定画面の実装（Phase 2）
-        print("設定がクリックされました")
+        if settingsWindow == nil {
+            let settingsView = SettingsView(viewModel: SettingsViewModel())
+            let hostingController = NSHostingController(rootView: settingsView)
+
+            let window = NSWindow(contentViewController: hostingController)
+            window.title = "設定"
+            window.styleMask = [.titled, .closable]
+            window.setContentSize(NSSize(width: 500, height: 400))
+            window.center()
+
+            settingsWindow = window
+            window.delegate = self
+
+            AppLogger.settings.info("Settings window opened")
+        }
+
+        settingsWindow?.makeKeyAndOrderFront(nil)
+        NSApp.activate(ignoringOtherApps: true)
     }
 
     @objc private func showAbout() {
@@ -259,5 +291,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @objc private func quit() {
         NSApplication.shared.terminate(nil)
+    }
+}
+
+// MARK: - NSWindowDelegate
+
+extension AppDelegate: NSWindowDelegate {
+    func windowWillClose(_ notification: Notification) {
+        if notification.object as? NSWindow === settingsWindow {
+            settingsWindow = nil
+            AppLogger.settings.info("Settings window closed")
+        }
     }
 }

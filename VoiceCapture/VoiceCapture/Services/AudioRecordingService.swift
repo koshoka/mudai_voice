@@ -76,9 +76,9 @@ class AudioRecordingService: NSObject, AudioRecordingServiceProtocol {
 
         return [
             AVFormatIDKey: Int(kAudioFormatLinearPCM),
-            AVSampleRateKey: settings.sampleRate,
-            AVNumberOfChannelsKey: settings.channels,
-            AVLinearPCMBitDepthKey: settings.bitDepth,
+            AVSampleRateKey: settings.sampleRateValue,
+            AVNumberOfChannelsKey: settings.channelCountValue,
+            AVLinearPCMBitDepthKey: settings.bitDepthValue,
             AVLinearPCMIsFloatKey: false,
             AVLinearPCMIsBigEndianKey: false,
             AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue

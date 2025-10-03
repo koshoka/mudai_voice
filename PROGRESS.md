@@ -1,7 +1,7 @@
 # VoiceCapture - 実装進捗状況
 
-**最終更新**: 2025-10-03
-**現在のフェーズ**: Phase 1完了 / Phase 2準備中
+**最終更新**: 2025-10-04
+**現在のフェーズ**: Phase 3部分完了・動作テスト保留中（マイク不在）
 
 ---
 
@@ -240,123 +240,271 @@
 ## Phase 2: ホットキーと設定
 
 **期間**: 2-3日
-**状態**: [ ] 未着手
+**状態**: [VERIFIED] 完了・動作確認済み
 **目標**: グローバルホットキー、設定画面UI
+**実装日**: 2025-10-03
 
 ### 2.1 グローバルホットキー
 
-- [ ] HotKeyService実装
-  - ファイル: VoiceCapture/Services/HotKeyService.swift
-  - 実装内容:
-    - Carbon HotKey API使用
-    - デフォルトキー: Option + P
-    - 録音開始/停止トグル
+- [VERIFIED] KeyboardShortcuts SPM統合
+  - 実装日: 2025-10-03
+  - ライブラリ: KeyboardShortcuts by Sindre Sorhus (v2.4.0)
+  - 確認内容:
+    - SPM依存関係追加成功
+    - macOS 12.0互換性確認
+    - サンドボックス対応
 
-- [ ] HotKeyServiceProtocol定義
-  - ファイル: VoiceCapture/Services/Protocols/HotKeyServiceProtocol.swift
+- [VERIFIED] KeyboardShortcuts.Name拡張定義
+  - 実装日: 2025-10-03
+  - ファイル: VoiceCapture/Extensions/KeyboardShortcuts+Names.swift
+  - 確認内容:
+    - .toggleRecording定義
+    - デフォルトホットキー: Option + P
+    - カスタマイズ可能
 
-- [ ] AppDelegateにHotKey統合
-  - setupServices()でHotKeyService初期化
-  - RecordingViewModelと連携
+- [VERIFIED] AppDelegateにホットキー統合
+  - 実装日: 2025-10-03
+  - ファイル: VoiceCapture/AppDelegate.swift:141-147
+  - 確認内容:
+    - setupKeyboardShortcuts()メソッド実装
+    - RecordingViewModelと連携
+    - Option + P で録音開始/停止動作確認済み
 
 ### 2.2 設定画面UI
 
-- [ ] SettingsView.swift実装
+- [VERIFIED] SettingsView.swift実装
+  - 実装日: 2025-10-03
   - ファイル: VoiceCapture/Views/Settings/SettingsView.swift
-  - UI要素:
-    - 保存先ディレクトリ選択
-    - ホットキーカスタマイズ
-    - 音声品質設定
-    - 自動文字起こしON/OFF
+  - 確認内容:
+    - SwiftUIベースのForm UI
+    - 保存先ディレクトリ選択（NSOpenPanel）
+    - ホットキーレコーダー（KeyboardShortcuts.Recorder）
+    - 音声品質Picker（サンプルレート、ビット深度、チャンネル）
+    - 自動文字起こしToggle
+    - デフォルトリセットボタン
+    - macOS 12.0互換性確認（.formStyle削除）
 
-- [ ] SettingsViewModel.swift実装
+- [VERIFIED] SettingsViewModel.swift実装
+  - 実装日: 2025-10-03
   - ファイル: VoiceCapture/ViewModels/SettingsViewModel.swift
-  - 機能:
-    - SettingsManager連携
-    - バリデーション
-    - 設定保存
+  - 確認内容:
+    - @MainActor対応
+    - SettingsManagerとの双方向バインディング（Combine）
+    - リアルタイム設定保存
+    - NSOpenPanelによるディレクトリ選択
+    - resetToDefaults()メソッド
 
-- [ ] 設定ウィンドウ管理
-  - AppDelegateにウィンドウ管理追加
-  - メニューから設定画面を開く
+- [VERIFIED] 設定ウィンドウ管理
+  - 実装日: 2025-10-03
+  - ファイル: VoiceCapture/AppDelegate.swift:247-266, 283-290
+  - 確認内容:
+    - openSettings()メソッド実装
+    - NSHostingControllerによるSwiftUI統合
+    - ウィンドウライフサイクル管理（NSWindowDelegate）
+    - メニューから設定画面が正常に開く
 
 ### 2.3 音声品質カスタマイズ
 
-- [ ] AudioSettings拡張
-  - サンプルレート選択（44.1kHz, 48kHz）
-  - ビット深度選択（16bit, 24bit）
-  - チャンネル選択（モノラル, ステレオ）
+- [VERIFIED] AudioSettings拡張
+  - 実装日: 2025-10-03
+  - ファイル: VoiceCapture/Models/AudioSettings.swift
+  - 確認内容:
+    - 型安全なenum定義（SampleRate, BitDepth, ChannelCount）
+    - CaseIterable + Codable準拠
+    - displayNameプロパティ（UI表示用）
+    - AVFoundation変換プロパティ（sampleRateValue等）
+    - サンプルレート: 44.1kHz, 48kHz
+    - ビット深度: 16-bit, 24-bit
+    - チャンネル: モノラル, ステレオ
 
-- [ ] AudioRecordingService更新
-  - SettingsManagerから設定取得
-  - 動的な録音設定適用
+- [VERIFIED] AudioRecordingService更新
+  - 実装日: 2025-10-03
+  - ファイル: VoiceCapture/Services/AudioRecordingService.swift:74-86
+  - 確認内容:
+    - buildRecordingSettings()更新
+    - SettingsManagerから動的設定取得
+    - enum型との統合完了
 
-### 2.4 テスト
+### 2.4 マイク選択機能（UI実装）
 
-- [ ] ホットキーテスト
-  - キー登録/解除
-  - 競合検出
+- [x] AudioDevice.swift実装
+  - 実装日: 2025-10-04
+  - ファイル: VoiceCapture/Models/AudioDevice.swift
+  - 確認内容:
+    - Identifiable, Codable, Hashable準拠
+    - 利用可能なマイクデバイス列挙（AVCaptureDevice）
+    - システムデフォルトデバイス定義
 
-- [ ] 設定画面UIテスト
-  - 設定保存/読み込み
-  - バリデーション
+- [x] SettingsManagerにマイク管理機能追加
+  - 実装日: 2025-10-04
+  - ファイル: VoiceCapture/Utilities/SettingsManager.swift
+  - 確認内容:
+    - selectedAudioDeviceプロパティ追加
+    - UserDefaults永続化
+    - availableAudioDevicesプロパティ
+
+- [x] SettingsViewModelにマイクバインディング追加
+  - 実装日: 2025-10-04
+  - ファイル: VoiceCapture/ViewModels/SettingsViewModel.swift
+  - 確認内容:
+    - selectedAudioDeviceバインディング
+    - availableAudioDevices computed property
+
+- [x] SettingsViewにマイク選択UI追加
+  - 実装日: 2025-10-04
+  - 動作確認日: 2025-10-04
+  - ファイル: VoiceCapture/Views/Settings/SettingsView.swift
+  - 確認内容:
+    - 「録音デバイス」セクション追加
+    - Pickerで利用可能なマイク選択可能
+    - iPhone Mirroring経由のマイクも表示される
+
+- [~] AudioRecordingServiceでの実装
+  - 状態: 未実装（将来対応予定）
+  - 理由: AVAudioRecorderは特定デバイス指定に非対応
+  - 今後: AVAudioEngineへのリファクタリングが必要
+
+### 2.5 テスト
+
+- [VERIFIED] ホットキー動作確認
+  - 実装日: 2025-10-03
+  - 確認内容:
+    - Option + P で録音開始/停止動作確認済み
+    - KeyboardShortcutsライブラリによる競合検出機能あり
+    - カスタマイズ可能（設定画面から変更可能）
+
+- [VERIFIED] 設定画面UIテスト
+  - 実装日: 2025-10-03-04
+  - 確認内容:
+    - 設定画面が正常に開く
+    - 各UI要素が正常に表示される
+    - マイク選択Pickerの動作確認済み（2025-10-04）
+    - Whisperモデル選択Pickerの動作確認済み（2025-10-04）
 
 ---
 
-## Phase 3: MLX Swift統合
+## Phase 3: WhisperKit統合（文字起こし機能）
 
 **期間**: 4-5日
-**状態**: [ ] 未着手
-**目標**: MLX Whisper統合、自動文字起こし
+**状態**: [~] 部分完了・動作テスト保留中（マイク不在のため）
+**目標**: WhisperKit統合、自動文字起こし
+**実装日**: 2025-10-04
 
-### 3.1 MLX Swift セットアップ
+### 3.1 WhisperKit セットアップ
 
-- [ ] MLX SwiftをSPM依存関係に追加
-  - Package.swift更新
-  - ビルド確認
+- [x] macOS最小バージョンを15.0に変更
+  - 実装日: 2025-10-04
+  - ファイル: Info.plist, project.pbxproj
+  - 確認内容:
+    - LSMinimumSystemVersion: 15.0
+    - MACOSX_DEPLOYMENT_TARGET: 15.0
+    - WhisperKit要件（macOS 14.0+）を満たす
 
-- [ ] Whisperモデルダウンロード
-  - mlx-swift-examples参照
-  - モデル配置場所決定
+- [x] WhisperKitをSPM依存関係に追加
+  - 実装日: 2025-10-04
+  - リポジトリ: https://github.com/argmaxinc/WhisperKit
+  - バージョン: main (f31370f)
+  - 確認内容: ビルド成功
+
+- [x] Whisperモデル選択機能
+  - 実装日: 2025-10-04
+  - ファイル: VoiceCapture/Models/AudioSettings.swift
+  - 確認内容:
+    - WhisperModel enum追加（small, medium）
+    - displayNameプロパティ
+    - デフォルト: medium
+
+- [x] SettingsManagerにWhisperモデル管理追加
+  - 実装日: 2025-10-04
+  - ファイル: VoiceCapture/Utilities/SettingsManager.swift
+  - 確認内容:
+    - whisperModelプロパティ
+    - UserDefaults永続化
+    - デフォルト値: medium
+
+- [x] SettingsViewにWhisperモデル選択UI追加
+  - 実装日: 2025-10-04
+  - 動作確認日: 2025-10-04
+  - ファイル: VoiceCapture/Views/Settings/SettingsView.swift
+  - 確認内容:
+    - Whisperモデル選択Picker追加
+    - Small/Medium選択可能
+    - ヘルプテキスト表示
+
+- [ ] Whisperモデルダウンロード確認
+  - 状態: 未確認（初回実行時に自動ダウンロード）
+  - Small: 約500MB
+  - Medium: 約1.5GB
 
 ### 3.2 TranscriptionService実装
 
-- [ ] TranscriptionService.swift実装
+- [x] TranscriptionServiceProtocol.swift実装
+  - 実装日: 2025-10-04
+  - ファイル: VoiceCapture/Services/Protocols/TranscriptionServiceProtocol.swift
+  - 確認内容:
+    - transcribe(audioURL:) async throws -> String
+    - transcriptionProgress Publisher
+
+- [x] TranscriptionService.swift実装
+  - 実装日: 2025-10-04
   - ファイル: VoiceCapture/Services/TranscriptionService.swift
-  - 機能:
-    - MLX Whisper初期化
+  - 確認内容:
+    - WhisperKit初期化（設定からモデル選択）
     - 音声ファイル→テキスト変換
-    - 進捗報告
+    - 進捗報告（0.0〜1.0）
+    - エラーハンドリング
+    - AppLoggerログ記録
+    - WhisperKit v0.6.0 API対応（配列戻り値）
 
-- [ ] TranscriptionServiceProtocol実装
-  - async/await対応
-  - 進捗Publisher
-
-- [ ] TranscriptionViewModel完全実装
-  - 文字起こし開始/キャンセル
-  - 進捗表示
-  - エラーハンドリング
+- [x] TranscriptionViewModel完全実装
+  - 実装日: 2025-10-04
+  - ファイル: VoiceCapture/ViewModels/TranscriptionViewModel.swift
+  - 確認内容:
+    - @MainActor対応
+    - 文字起こし開始/キャンセル
+    - ステータス管理（idle/transcribing/completed/failed）
+    - 進捗表示（0.0〜1.0）
+    - Markdown保存
+    - 通知送信
 
 ### 3.3 自動文字起こし統合
 
-- [ ] RecordingViewModel統合
-  - 録音停止後の自動文字起こしトリガー
-  - SettingsManagerの設定に従う
+- [x] RecordingViewModel統合準備完了
+  - 実装日: 2025-10-03（Phase 1）
+  - ファイル: VoiceCapture/ViewModels/RecordingViewModel.swift
+  - 確認内容:
+    - TranscriptionViewModel連携コード実装済み
+    - SettingsManagerの自動文字起こし設定参照
 
-- [ ] Markdown出力
-  - FileStorageServiceでMarkdown生成
-  - メタデータ埋め込み（日時、長さ）
+- [x] Markdown出力機能
+  - 実装日: 2025-10-03（Phase 1）
+  - ファイル: VoiceCapture/Services/FileStorageService.swift
+  - 確認内容:
+    - saveMarkdown(text:audioURL:)実装済み
+    - メタデータ埋め込み（日時、ファイル名）
 
 ### 3.4 テスト
 
+- [ ] 文字起こし動作確認
+  - 状態: 未確認（マイク不在のため保留）
+  - 確認予定項目:
+    - 録音→自動文字起こし→Markdown保存フロー
+    - Small/Mediumモデル切り替え
+    - 通知表示
+
 - [ ] 文字起こし精度テスト
-  - 日本語音声
-  - 英語音声
-  - ノイズ環境
+  - 状態: 未実施
+  - テストケース:
+    - 日本語音声
+    - 英語音声
+    - ノイズ環境
 
 - [ ] パフォーマンステスト
-  - 処理時間計測
-  - メモリ使用量
+  - 状態: 未実施
+  - 測定項目:
+    - 処理時間計測（Small vs Medium）
+    - メモリ使用量
+    - 初回モデルダウンロード時間
 
 ---
 
@@ -417,6 +565,43 @@
 - **解決**: アプリ起動時に明示的に権限チェック、システム環境設定誘導
 - **参照**: VoiceCapture/AppDelegate.swift:61-101
 
+#### 6. ホットキーAPI選択（Phase 2）
+- **問題**: Carbon HotKey API, CGEventTap, サードパーティライブラリの選択
+- **解決**: KeyboardShortcuts (Sindre Sorhus)を採用
+- **理由**:
+  - macOS 12.0+完全対応
+  - SwiftUI統合が優秀（Recorderコンポーネント）
+  - 自動競合検出、UserDefaults永続化
+  - サンドボックス対応、App Store互換
+  - Carbon APIのようなC互換性問題なし
+  - CGEventTapのようなAccessibility権限不要
+- **参照**: VoiceCapture/Extensions/KeyboardShortcuts+Names.swift
+
+#### 7. macOS 13.0+ API互換性（Phase 2）
+- **問題**: `.formStyle(.grouped)` がmacOS 13.0+専用でビルドエラー
+- **解決**: `.formStyle(.grouped)` を削除（macOS 12.0でもFormは正常動作）
+- **参照**: VoiceCapture/Views/Settings/SettingsView.swift:80
+
+#### 8. NSOpenPanel表示問題（Phase 2）
+- **問題**: LSUIElement=trueのメニューバーアプリでNSOpenPanelがXcodeに引き戻される
+- **解決**: `NSApp.activate(ignoringOtherApps: true)` + `panel.level = .modalPanel` 追加
+- **参照**: VoiceCapture/ViewModels/SettingsViewModel.swift:76-90
+
+#### 9. entitlements権限不足（Phase 2）
+- **問題**: サンドボックス環境でNSOpenPanelがクラッシュ
+- **解決**: entitlementsに `com.apple.security.files.user-selected.read-write` 追加
+- **参照**: VoiceCapture/VoiceCapture.entitlements
+
+#### 10. WhisperKit API変更（Phase 3）
+- **問題**: WhisperKit v0.6.0で `transcribe()` の戻り値が `TranscriptionResult?` から `[TranscriptionResult]` に変更
+- **解決**: `.text` アクセスを `.first?.text` に変更
+- **参照**: VoiceCapture/Services/TranscriptionService.swift:46
+
+#### 11. AVCaptureDevice非推奨API（Phase 2）
+- **問題**: `.builtInMicrophone` と `.externalUnknown` がmacOS 14.0で非推奨
+- **解決**: `.microphone` と `.external` に変更
+- **参照**: VoiceCapture/Models/AudioDevice.swift:36
+
 ### 未解決・要検討
 
 #### 1. ファイル保存場所
@@ -425,20 +610,29 @@
   - A. サンドボックス無効化（非推奨）
   - B. ダウンロードフォルダなど一般的な場所に保存
   - C. 現状維持（メニューから「最後の録音を開く」で対応）
-- **決定**: Phase 2で再検討
+- **決定**: Phase 2で設定画面からカスタマイズ可能に（解決）
+- **状態**: 完了（2025-10-04）
 
-#### 2. ホットキーAPI選択
-- **選択肢**:
-  - A. Carbon HotKey API（古いが安定）
-  - B. CGEventTap（モダンだが複雑）
-  - C. サードパーティライブラリ（MASShortcut等）
-- **決定**: Phase 2実装時に決定
+#### 2. マイク選択機能の実装
+- **現状**: UI表示のみ、実際の録音には反映されない
+- **理由**: AVAudioRecorderは特定デバイス指定に非対応
+- **必要な対応**: AudioRecordingServiceをAVAudioEngineベースに書き換え
+- **影響**:
+  - 録音処理の大幅な変更
+  - テスト再実施が必要
+- **優先度**: 中（Phase 4以降で対応検討）
+
+#### 3. 文字起こしファイルを開く機能
+- **問題**: メニューの「最後の文字起こしを開く」ボタンが動作しない
+- **状態**: 未調査
+- **優先度**: 高（次の対応項目）
 
 ---
 
 ## コミット履歴
 
 ```
+[今後追加] - feat: Phase 3完了 - WhisperKit統合・マイク選択UI実装 (2025-10-04)
 d13ca2b - feat: 通知権限の実装完了 - Phase 1完全動作確認済み (2025-10-03)
 4cdd830 - feat: Phase 1 Day 2完了 - MVVM+Services アーキテクチャ実装 (2025-10-03)
 afe935e - feat: Phase 1 Day 1完了 - メニューバーアプリ基本実装 (2025-10-03)
@@ -448,29 +642,51 @@ afe935e - feat: Phase 1 Day 1完了 - メニューバーアプリ基本実装 (2
 
 ## 次のアクション
 
-### 推奨: Phase 2実装開始
+### 優先度1: マイクを使った動作確認
 
-**優先度高**:
-1. グローバルホットキー実装（HotKeyService）
-2. 設定画面UI作成（SettingsView）
-3. 音声品質カスタマイズ
+**Phase 3完了のため**:
+1. マイクを接続
+2. 録音→自動文字起こし→Markdown保存の全フロー確認
+3. Small/Mediumモデルの切り替えテスト
+4. 文字起こし精度の確認（日本語・英語）
 
-**理由**:
-- Phase 1の核心機能は完全動作
-- ユーザビリティ向上の優先度が高い
-- テストはPhase 3以降で集中的に実施
+### 優先度2: バグ修正
 
-### 代替案
+**「文字起こしファイルを開く」機能の修正**:
+1. 問題原因の調査
+2. 修正実装
+3. 動作確認
 
-#### A. Phase 1テスト強化
-- ユニットテスト作成
-- 統合テスト実装
-- コードカバレッジ向上
+### 優先度3: Phase 4実装
 
-#### B. Phase 3準備
-- MLX Swift調査
-- Whisperモデル検証
-- パフォーマンス要件定義
+**UX改善**:
+1. 録音中アニメーション
+2. 通知改善
+3. エラーハンドリング強化
+
+### Phase 3完了時点での状態
+
+**実装完了機能**:
+- ✅ WhisperKit統合（Small/Medium選択可能）
+- ✅ TranscriptionService完全実装
+- ✅ 自動文字起こしワークフロー
+- ✅ マイク選択UI（実装は将来対応）
+- ✅ 設定画面の拡充
+
+**動作確認済み**:
+- ✅ 設定画面のUI表示（マイク選択、Whisperモデル選択）
+- ✅ ビルド成功
+- ✅ 録音機能（録音完了通知表示）
+
+**未確認（マイク不在のため）**:
+- ⏸ 実際の文字起こし動作
+- ⏸ Whisperモデルダウンロード
+- ⏸ 文字起こし精度
+- ⏸ パフォーマンス
+
+**既知の問題**:
+- ❌ 文字起こしファイルを開く機能が動作しない
+- ⚠️ マイク選択がUI表示のみ（実録音には反映されない）
 
 ---
 

@@ -33,12 +33,35 @@ class SettingsManager: ObservableObject {
         }
     }
 
+    @Published var whisperModel: AudioSettings.WhisperModel {
+        didSet {
+            UserDefaults.standard.set(whisperModel.rawValue, forKey: Keys.whisperModel)
+        }
+    }
+
+    @Published var selectedAudioDevice: AudioDevice {
+        didSet {
+            if let encoded = try? JSONEncoder().encode(selectedAudioDevice) {
+                UserDefaults.standard.set(encoded, forKey: Keys.selectedAudioDevice)
+            }
+        }
+    }
+
+    // MARK: - Computed Properties
+
+    /// 利用可能なオーディオ入力デバイスのリスト
+    var availableAudioDevices: [AudioDevice] {
+        AudioDevice.availableDevices()
+    }
+
     // MARK: - Private Keys
 
     private enum Keys {
         static let saveDirectory = "saveDirectory"
         static let autoTranscribe = "autoTranscribe"
         static let audioSettings = "audioSettings"
+        static let whisperModel = "whisperModel"
+        static let selectedAudioDevice = "selectedAudioDevice"
     }
 
     // MARK: - Initialization
@@ -65,6 +88,23 @@ class SettingsManager: ObservableObject {
         } else {
             self.audioSettings = AudioSettings.default
         }
+
+        // Whisperモデルの読み込み
+        if let modelString = UserDefaults.standard.string(forKey: Keys.whisperModel),
+           let model = AudioSettings.WhisperModel(rawValue: modelString) {
+            self.whisperModel = model
+        } else {
+            self.whisperModel = .medium // デフォルトはmedium
+            UserDefaults.standard.set(AudioSettings.WhisperModel.medium.rawValue, forKey: Keys.whisperModel)
+        }
+
+        // 選択されたオーディオデバイスの読み込み
+        if let data = UserDefaults.standard.data(forKey: Keys.selectedAudioDevice),
+           let device = try? JSONDecoder().decode(AudioDevice.self, from: data) {
+            self.selectedAudioDevice = device
+        } else {
+            self.selectedAudioDevice = .default // デフォルトはシステムデフォルト
+        }
     }
 
     // MARK: - Methods
@@ -76,5 +116,7 @@ class SettingsManager: ObservableObject {
         saveDirectory = defaultDirectory
         autoTranscribe = true
         audioSettings = AudioSettings.default
+        whisperModel = .medium
+        selectedAudioDevice = .default
     }
 }
