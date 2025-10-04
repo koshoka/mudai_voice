@@ -1,4 +1,4 @@
-# VoiceCapture
+# nonvoice
 
 **macOS専用のワンボタン録音＋自動文字起こしアプリ**
 
