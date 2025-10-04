@@ -96,7 +96,7 @@ class NotificationService: NSObject, NotificationServiceProtocol {
 
     func sendRecordingComplete(fileName: String) async {
         let fileURL = SettingsManager.shared.saveDirectory.appendingPathComponent(fileName)
-        let fileInfo = getFileInfo(at: fileURL)
+        let fileInfo = await getFileInfo(at: fileURL)
 
         let content = UNMutableNotificationContent()
         content.title = "録音完了"
@@ -125,7 +125,7 @@ class NotificationService: NSObject, NotificationServiceProtocol {
 
     func sendTranscriptionComplete(fileName: String) async {
         let fileURL = SettingsManager.shared.saveDirectory.appendingPathComponent(fileName)
-        let fileInfo = getFileInfo(at: fileURL)
+        let fileInfo = await getFileInfo(at: fileURL)
 
         let content = UNMutableNotificationContent()
         content.title = "文字起こし完了"
@@ -152,6 +152,39 @@ class NotificationService: NSObject, NotificationServiceProtocol {
         }
     }
 
+    func sendTranscriptionProgress(fileName: String, progress: Float) async {
+        let percentage = Int(progress * 100)
+
+        // 進捗バーの視覚化（20個のブロック）
+        let totalBars = 20
+        let filledBars = Int(Float(totalBars) * progress)
+        let progressBar = String(repeating: "▓", count: filledBars) +
+                          String(repeating: "░", count: totalBars - filledBars)
+
+        let content = UNMutableNotificationContent()
+        content.title = "文字起こし中"
+        content.body = """
+        \(fileName)
+        \(progressBar) \(percentage)%
+        """
+        content.interruptionLevel = .active
+        // 音は設定しない（進捗通知は無音）
+
+        // 固定IDを使用して通知を更新（複数の通知が表示されないようにする）
+        let request = UNNotificationRequest(
+            identifier: "transcription-progress",
+            content: content,
+            trigger: nil
+        )
+
+        do {
+            try await UNUserNotificationCenter.current().add(request)
+            AppLogger.transcription.debug("Transcription progress notification updated: \(percentage)%")
+        } catch {
+            AppLogger.transcription.error("Failed to send progress notification: \(error.localizedDescription)")
+        }
+    }
+
     func sendError(message: String) async {
         let content = UNMutableNotificationContent()
         content.title = "エラー"
@@ -173,7 +206,7 @@ class NotificationService: NSObject, NotificationServiceProtocol {
 
     // MARK: - Helper Methods
 
-    private func getFileInfo(at url: URL) -> FileInfo {
+    private func getFileInfo(at url: URL) async -> FileInfo {
         guard FileManager.default.fileExists(atPath: url.path) else {
             return FileInfo(size: nil, duration: nil, creationDate: nil)
         }
@@ -183,10 +216,10 @@ class NotificationService: NSObject, NotificationServiceProtocol {
             let size = attributes[.size] as? Int64
             let creationDate = attributes[.creationDate] as? Date
 
-            // 音声ファイルの場合、時間情報を取得（簡易実装）
+            // 音声ファイルの場合、時間情報を取得
             var duration: TimeInterval?
             if url.pathExtension == "m4a" || url.pathExtension == "wav" || url.pathExtension == "mp3" {
-                duration = getAudioDuration(at: url)
+                duration = await getAudioDuration(at: url)
             }
 
             return FileInfo(size: size, duration: duration, creationDate: creationDate)
@@ -196,19 +229,21 @@ class NotificationService: NSObject, NotificationServiceProtocol {
         }
     }
 
-    private func getAudioDuration(at url: URL) -> TimeInterval? {
+    private func getAudioDuration(at url: URL) async -> TimeInterval? {
         // AVFoundationを使用して音声ファイルの長さを取得
         let asset = AVURLAsset(url: url)
 
-        // 同期的にdurationを取得（非推奨だが同期関数のため使用）
-        // Note: asset.durationはmacOS 13.0で非推奨だが、
-        // 通知の軽量な処理のため同期的に取得する
-        let duration = asset.duration
-        guard duration.isValid && !duration.isIndefinite else {
+        do {
+            // macOS 13.0+の推奨APIを使用（非同期）
+            let duration = try await asset.load(.duration)
+            guard duration.isValid && !duration.isIndefinite else {
+                return nil
+            }
+            return CMTimeGetSeconds(duration)
+        } catch {
+            AppLogger.recording.error("Failed to get audio duration: \(error.localizedDescription)")
             return nil
         }
-
-        return CMTimeGetSeconds(duration)
     }
 
     private func formatRecordingNotificationBody(fileName: String, fileInfo: FileInfo) -> String {

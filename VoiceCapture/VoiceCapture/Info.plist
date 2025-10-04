@@ -12,6 +12,8 @@
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundleDisplayName</key>
+	<string>nonvoice</string>
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
@@ -23,9 +25,9 @@
 	<key>LSUIElement</key>
 	<true/>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>VoiceCaptureはあなたの音声を録音して文字起こしするために、マイクへのアクセスが必要です。</string>
+	<string>nonvoiceはあなたの音声を録音して文字起こしするために、マイクへのアクセスが必要です。</string>
 	<key>NSUserNotificationsUsageDescription</key>
-	<string>VoiceCaptureは録音完了や文字起こし完了をお知らせするために、通知の送信が必要です。</string>
+	<string>nonvoiceは録音完了や文字起こし完了をお知らせするために、通知の送信が必要です。</string>
 	<key>NSAppleEventsUsageDescription</key>
 	<string>グローバルホットキーを登録するために、システムイベントへのアクセスが必要です。</string>
 	<key>NSPrincipalClass</key>

@@ -32,6 +32,8 @@
 		A1000001000000000000001 /* VoiceCaptureApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000001000000000000001 /* VoiceCaptureApp.swift */; };
 		A1000002000000000000001 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000002000000000000001 /* AppDelegate.swift */; };
 		A1000003000000000000001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2000003000000000000001 /* Assets.xcassets */; };
+		BD4BDB954035B484B8D6AFB0 /* ModelDownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804B0ED62389BD441AA1CC03 /* ModelDownloadView.swift */; };
+		E1179FD40477E7C898BE41D5 /* ModelDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A297A83F8CFF3FCE65AD39CA /* ModelDownloadManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,12 +57,14 @@
 		4BE0C9AB2E9025D000984A24 /* TranscriptionServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriptionServiceProtocol.swift; sourceTree = "<group>"; };
 		4BE0C9AD2E9026E100984A24 /* TranscriptionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriptionService.swift; sourceTree = "<group>"; };
 		4BE0C9AF2E902BBF00984A24 /* AudioDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioDevice.swift; sourceTree = "<group>"; };
+		804B0ED62389BD441AA1CC03 /* ModelDownloadView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ModelDownloadView.swift; path = Views/ModelDownloadView.swift; sourceTree = "<group>"; };
 		A0000001000000000000001 /* VoiceCapture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VoiceCapture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2000001000000000000001 /* VoiceCaptureApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceCaptureApp.swift; sourceTree = "<group>"; };
 		A2000002000000000000001 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2000003000000000000001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A2000004000000000000001 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A2000005000000000000001 /* VoiceCapture.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VoiceCapture.entitlements; sourceTree = "<group>"; };
+		A297A83F8CFF3FCE65AD39CA /* ModelDownloadManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ModelDownloadManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +109,7 @@
 				4B781CFC2E8FF8B900B38203 /* AudioRecordingService.swift */,
 				4B781CFD2E8FF8B900B38203 /* FileStorageService.swift */,
 				4B781CFE2E8FF8B900B38203 /* NotificationService.swift */,
+				A297A83F8CFF3FCE65AD39CA /* ModelDownloadManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -152,6 +157,7 @@
 				A2000003000000000000001 /* Assets.xcassets */,
 				A2000004000000000000001 /* Info.plist */,
 				A2000005000000000000001 /* VoiceCapture.entitlements */,
+				804B0ED62389BD441AA1CC03 /* ModelDownloadView.swift */,
 			);
 			path = VoiceCapture;
 			sourceTree = "<group>";
@@ -259,6 +265,8 @@
 				4BE0C9A02E90154200984A24 /* KeyboardShortcuts+Names.swift in Sources */,
 				4BE0C9A22E90155E00984A24 /* SettingsViewModel.swift in Sources */,
 				4BE0C9A42E90157100984A24 /* SettingsView.swift in Sources */,
+				E1179FD40477E7C898BE41D5 /* ModelDownloadManager.swift in Sources */,
+				BD4BDB954035B484B8D6AFB0 /* ModelDownloadView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

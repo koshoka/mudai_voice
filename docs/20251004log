@@ -1,0 +1,494 @@
+デフォルト	17:00:22.136401+0900	VoiceCapture	window <NSWindow: 0x149ac4c10> windowNumber=36b finishing close
+デフォルト	17:00:22.138631+0900	VoiceCapture	order window: 36b op: 0 relative: 0 related: 0
+デフォルト	17:00:22.138745+0900	VoiceCapture	[0x600000f08b40] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+デフォルト	17:00:22.138763+0900	VoiceCapture	[0x60000133d860] Session canceled.
+デフォルト	17:00:22.139524+0900	VoiceCapture	agent connection cancelled (details: Session manually canceled)
+デフォルト	17:00:22.139552+0900	VoiceCapture	[0x60000133d860] Disposing of session
+デフォルト	17:00:23.701706+0900	WindowManager	Connection invalidated | (22603) VoiceCapture
+デフォルト	17:00:23.702212+0900	runningboardd	Invalidating assertion 393-386-4597 (target:[app<application.com.yourdomain.VoiceCapture.11536929.11539140.8D593F34-7313-420D-8BC2-3405A4DFDBAC(501)>:22603]) from originator [osservice<com.apple.WindowServer(88)>:386]
+デフォルト	17:00:23.702275+0900	runningboardd	XPC connection invalidated: [app<application.com.yourdomain.VoiceCapture.11536929.11539140.8D593F34-7313-420D-8BC2-3405A4DFDBAC(501)>:22603]
+デフォルト	17:00:23.702572+0900	runningboardd	Invalidating assertion 393-386-4595 (target:[app<application.com.yourdomain.VoiceCapture.11536929.11539140.8D593F34-7313-420D-8BC2-3405A4DFDBAC(501)>:22603]) from originator [osservice<com.apple.WindowServer(88)>:386]
+デフォルト	17:00:23.709487+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.8D593F34-7313-420D-8BC2-3405A4DFDBAC(501)>:22603] termination reported by launchd (0, 0, 9)
+デフォルト	17:00:23.709590+0900	runningboardd	Removing process: [app<application.com.yourdomain.VoiceCapture.11536929.11539140.8D593F34-7313-420D-8BC2-3405A4DFDBAC(501)>:22603]
+デフォルト	17:00:23.709770+0900	runningboardd	Removing launch job for: [app<application.com.yourdomain.VoiceCapture.11536929.11539140.8D593F34-7313-420D-8BC2-3405A4DFDBAC(501)>:22603]
+デフォルト	17:00:23.709952+0900	runningboardd	Removed job for [app<application.com.yourdomain.VoiceCapture.11536929.11539140.8D593F34-7313-420D-8BC2-3405A4DFDBAC(501)>:22603]
+デフォルト	17:00:23.709969+0900	runningboardd	Removing assertions for terminated process: [app<application.com.yourdomain.VoiceCapture.11536929.11539140.8D593F34-7313-420D-8BC2-3405A4DFDBAC(501)>:22603]
+デフォルト	17:00:23.710019+0900	runningboardd	Removed last relative-start-date-defining assertion for process app<application.com.yourdomain.VoiceCapture.11536929.11539140.8D593F34-7313-420D-8BC2-3405A4DFDBAC(501)>
+デフォルト	17:00:23.730125+0900	runningboardd	Calculated state for app<application.com.yourdomain.VoiceCapture.11536929.11539140.8D593F34-7313-420D-8BC2-3405A4DFDBAC(501)>: none (role: None) (endowments: (null))
+デフォルト	17:00:23.730356+0900	runningboardd	Calculated state for app<application.com.yourdomain.VoiceCapture.11536929.11539140.8D593F34-7313-420D-8BC2-3405A4DFDBAC(501)>: none (role: None) (endowments: (null))
+デフォルト	17:00:23.730988+0900	launchservicesd	Hit the server for a process handle 10ce15e50000584b that resolved to: [app<application.com.yourdomain.VoiceCapture.11536929.11539140.8D593F34-7313-420D-8BC2-3405A4DFDBAC(501)>:22603]
+デフォルト	17:00:23.731170+0900	gamepolicyd	Received state update for 22603 (app<application.com.yourdomain.VoiceCapture.11536929.11539140.8D593F34-7313-420D-8BC2-3405A4DFDBAC(501)>, none-NotVisible
+デフォルト	17:00:23.733057+0900	loginwindow	-[PersistentAppsSupport applicationQuit:] | for app:VoiceCapture, _appTrackingState = 2
+エラー	17:00:23.901405+0900	runningboardd	RBSStateCapture remove item called for untracked item 393-386-4595 (target:[app<application.com.yourdomain.VoiceCapture.11536929.11539140.8D593F34-7313-420D-8BC2-3405A4DFDBAC(501)>:22603])
+エラー	17:00:23.901433+0900	runningboardd	RBSStateCapture remove item called for untracked item 393-386-4597 (target:[app<application.com.yourdomain.VoiceCapture.11536929.11539140.8D593F34-7313-420D-8BC2-3405A4DFDBAC(501)>:22603])
+デフォルト	17:00:25.801983+0900	Xcode	VoiceCapture:VoiceCapture:Run:49e63b30167b9880: Launch VoiceCapture
+デフォルト	17:00:25.803524+0900	Xcode	49e63b30167b9880:49e63b30159933c0:Launch VoiceCapture Start
+デフォルト	17:00:25.803770+0900	Xcode	49e63b30167b9880:49e63b30159933c0:Launch VoiceCapture: Launching new instance of VoiceCapture:
+デフォルト	17:00:25.803822+0900	Xcode	49e63b30167b9880:49e63b30159933c0:Launch VoiceCapture: Launching suspended and the debugger is responsible for resuming.:
+デフォルト	17:00:25.815309+0900	runningboardd	Launch request for app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>[0] is using uid 501 (divined from auid 501 euid 501)
+デフォルト	17:00:25.815402+0900	runningboardd	Acquiring assertion targeting app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)> from originator [osservice<com.apple.coreservices.uiagent(501)>:582] with description <RBSAssertionDescriptor| "LS launch com.yourdomain.VoiceCapture" ID:393-582-4612 target:app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)> attributes:[
+	<RBSDomainAttribute| domain:"com.apple.launchservicesd" name:"LaunchRoleUserInteractive" sourceEnvironment:"(null)">
+	]>
+デフォルト	17:00:25.815490+0900	runningboardd	Assertion 393-582-4612 (target:app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>) will be created as active
+デフォルト	17:00:25.824904+0900	runningboardd	Checking PreventLaunch: global:0 exPath:/Users/kk/Library/Developer/Xcode/DerivedData/VoiceCapture-fsjkbtoxxlfkxtfulelfpovirebd/Build/Products/Debug/VoiceCapture.app/Contents/MacOS/VoiceCapture predicates:(null) allow:(null)
+デフォルト	17:00:25.825046+0900	runningboardd	Creating and launching job for: app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>
+デフォルト	17:00:25.825100+0900	runningboardd	_mutateContextIfNeeded called for com.yourdomain.VoiceCapture
+デフォルト	17:00:25.825278+0900	runningboardd	app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>: -[RBPersonaManager personaForIdentity:context:personaUID:personaUniqueString:] required 0.000000 ms (wallclock); resolved to {4294967295, (null)}
+デフォルト	17:00:25.825463+0900	runningboardd	'app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>' Constructed job description:
+<dictionary: 0xc86c13360> { count = 27, transaction: 0, voucher = 0x0, contents =
+	"Platform" => <int64: 0xb0635f4d77a1e6a7>: 1
+	"BinaryOrderPreference" => <array: 0xc86b83e10> { count = 2, capacity = 8, contents =
+		0: <dictionary: 0xc86b97d80> { count = 2, transaction: 0, voucher = 0x0, contents =
+			"CPUSubtype" => <int64: 0xb01ca0b2885e1957>: -1
+			"CPUType" => <int64: 0xb0635f4d7fa1e6cf>: 16777228
+		}
+		1: <dictionary: 0xc86b97720> { count = 2, transaction: 0, voucher = 0x0, contents =
+			"CPUSubtype" => <int64: 0xb01ca0b2885e1957>: -1
+			"CPUType" => <int64: 0xb01ca0b2885e1957>: -1
+		}
+	}
+	"ProcessType" => <string: 0xc86b80780> { length = 3, contents = "App" }
+	"EnableTransactions" => <bool: 0x1f74e2850>: false
+	"_ManagedBy" => <string: 0xc86dcef70> { length = 22, contents = "com.apple.runningboard" }
+	"StandardOutPath" => <string: 0xc86b80d20> { length = 12, contents = "/dev/ttys004" }
+	"CFBundleIdentifier" => <string: 0xc86b814d0> { length = 27, contents = "com.yourdomain.VoiceCapture" }
+	"_ResourceCoalition" => <string: 0xc86b83f30> { length = 104, contents = "app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>" }
+	"_DisablePointerAuth" => <bool: 0x1f74e2830>: true
+	"ThrottleInterval" => <int64: 0xb0635f4e885e1957>: 2147483647
+	"StandardErrorPath" => <string: 0xc86b81710> { length = 12, contents = "/dev/ttys004" }
+	"MachServices" => <dictionary: 0xc86a8d6e0> { count = 0, transaction: 0, voucher = 0x0, contents =
+	}
+	"EnablePressuredExit" => <bool: 0x1f74e2850>: false
+	"LimitLoadToSessionType" => <array: 0xc86b82df0> { count = 2, capacity = 8, contents =
+		0: <string: 0xc86b824f0> { length = 4, contents = "Aqua" }
+		1: <string: 0xc86b80c30> { length = 11, contents = "LoginWindow" }
+	}
+	"InitialTaskRole" => <int64: 0xb0635f4d77a1e6bf>: 2
+	"EnvironmentVariables" => <dictionary: 0xc86a08360> { count = 27, transaction: 0, voucher = 0x0, contents =
+		"CFLOG_FORCE_DISABLE_STDERR" => <string: 0xc86dccbd0> { length = 1, contents = "1" }
+		"DYLD_FRAMEWORK_PATH" => <string: 0xc86dcd6e0> { length = 235, contents = "/Users/kk/Library/Developer/Xcode/DerivedData/VoiceCapture-fsjkbtoxxlfkxtfulelfpovirebd/Build/Products/Debug:/Users/kk/Library/Developer/Xcode/DerivedData/VoiceCapture-fsjkbtoxxlfkxtfulelfpovirebd/Build/Products/Debug/PackageFrameworks" }
+		"CA_DEBUG_TRANSACTIONS" => <string: 0xc86dce460> { length = 1, contents = "0" }
+		"SQLITE_ENABLE_THREAD_ASSERTIONS" => <string: 0xc86c85a40> { length = 1, contents = "1" }
+		"OS_ACTIVITY_TOOLS_OVERSIZE" => <string: 0xc86dcedc0> { length = 3, contents = "YES" }
+		"__XPC_DYLD_FRAMEWORK_PATH" => <string: 0xc86dccb70> { length = 108, contents = "/Users/kk/Library/Developer/Xcode/DerivedData/VoiceCapture-fsjkbtoxxlfkxtfulelfpovirebd/Build/Products/Debug" }
+		"OS_ACTIVITY_TOOLS_PRIVACY" => <string: 0xc86dcf7b0> { length = 3, contents = "YES" }
+		"METAL_DEBUG_ERROR_MODE" => <string: 0xc86dcd800> { length = 1, contents = "0" }
+		"SWIFTUI_VIEW_DEBUG" => <string: 0xc86dcda10> { length = 3, contents = "287" }
+		"TERM" => <string: 0xc86b81470> { length = 4, contents = "dumb" }
+		"__XPC_LLVM_PROFILE_FILE" => <string: 0xc86c86670> { length = 9, contents = "/dev/null" }
+		"NSUnbufferedIO" => <string: 0xc86c860a0> { length = 3, contents = "YES" }
+		"__XPC_DYLD_LIBRARY_PATH" => <string: 0xc86dce190> { length = 108, contents = "/Users/kk/Library/Developer/Xcode/DerivedData/VoiceCapture-fsjkbtoxxlfkxtfulelfpovirebd/Build/Products/Debug" }
+		"METAL_DEVICE_WRAPPER_TYPE" => <string: 0xc86b83f00> { length = 1, contents = "1" }
+		"COMMAND_MODE" => <string: 0xc86c84630> { length = 8, contents = "unix2003" }
+		"__CFBundleIdentifier" => <string: 0xc86c87180> { length = 27, contents = "com.yourdomain.VoiceCapture" }
+		"OS_LOG_DT_HOOK_PREFIX" => <string: 0xc86dcd680> { length = 42, contents = "OSLOG-C7741CA3-0A9D-4683-A0E2-D45ACF816469" }
+		"PERFC_SUPPRESS_SYSTEM_REPORTS" => <string: 0xc86dcc660> { length = 1, contents = "1" }
+		"DYLD_INSERT_LIBRARIES" => <string: 0xc86dcf690> { length = 376, contents = "/Applications/Xcode.app/Contents/Developer/usr/lib/libLogRedirect.dylib:/Applications/Xcode.app/Contents/Developer/usr/lib/libBacktraceRecording.dylib:/Applications/Xcode.app/Contents/Developer/usr/lib/libMainThreadChecker.dylib:/usr/lib/libRPAC.dylib:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Debugger/libViewDebuggerSupport.dylib" }
+		"OS_LOG_DT_HOOK_MODE" => <string: 0xc86dcdfe0> { length = 4, contents = "0x07" }
+		"__XCODE_BUILT_PRODUCTS_DIR_PATHS" => <string: 0xc86dcc330> { length = 108, contents = "/Users/kk/Library/Developer/Xcode/DerivedData/VoiceCapture-fsjkbtoxxlfkxtfulelfpovirebd/Build/Products/Debug" }
+		"MallocNanoZone" => <string: 0xc86c85ef0> { length = 1, contents = "1" }
+		"IDE_DISABLED_OS_ACTIVITY_DT_MODE" => <string: 0xc86dcf510> { length = 1, contents = "1" }
+		"OS_LOG_TRANSLATE_PRINT_MODE" => <string: 0xc86c84960> { length = 4, contents = "0x80" }
+		"DYLD_LIBRARY_PATH" => <string: 0xc86c85da0> { length = 138, contents = "/Users/kk/Library/Developer/Xcode/DerivedData/VoiceCapture-fsjkbtoxxlfkxtfulelfpovirebd/Build/Products/Debug:/usr/lib/system/introspection" }
+		"LLVM_PROFILE_FILE" => <string: 0xc86dccba0> { length = 9, contents = "/dev/null" }
+		"CA_ASSERT_MAIN_THREAD_TRANSACTIONS" => <string: 0xc86dce2b0> { length = 1, contents = "0" }
+	}
+	"_AdditionalProperties" => <dictionary: 0xc86c13000> { count = 1, transaction: 0, voucher = 0x0, contents =
+		"RunningBoard" => <dictionary: 0xc86c106c0> { count = 2, transaction: 0, voucher = 0x0, contents =
+			"RunningBoardLaunchedIdentity" => <dictionary: 0xc86c110e0> { count = 5, transaction: 0, voucher = 0x0, contents =
+				"AJL" => <string: 0xc86dcc840> { length = 94, contents = "application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6" }
+				"TYPE" => <int64: 0xb0635f4d77a1e6a7>: 1
+				"AUID" => <uint64: 0xb0e35f4d77a1e907>: 501
+				"EAI" => <string: 0xc86dcdbc0> { length = 27, contents = "com.yourdomain.VoiceCapture" }
+				"PLAT" => <uint64: 0xb0e35f4d77a1e6a7>: 1
+			}
+			"RunningBoardLaunched" => <bool: 0x1f74e2830>: true
+		}
+	}
+	"ExitTimeOut" => <int64: 0xb0635f4d77a1e6a7>: 1
+	"Label" => <string: 0xc86dcc570> { length = 94, contents = "application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6" }
+	"WaitForDebugger" => <bool: 0x1f74e2830>: true
+	"StandardInPath" => <string: 0xc86b80f90> { length = 12, contents = "/dev/ttys004" }
+	"MaterializeDatalessFiles" => <bool: 0x1f74e2830>: true
+	"WorkingDirectory" => <string: 0xc86b83d20> { length = 1, contents = "/" }
+	"_LaunchType" => <int64: 0xb0635f4d77a1e6b7>: 3
+	"AbandonProcessGroup" => <bool: 0x1f74e2830>: true
+	"ProgramArguments" => <array: 0xc86dccb40> { count = 3, capacity = 8, contents =
+		0: <string: 0xc86dcd500> { length = 153, contents = "/Users/kk/Library/Developer/Xcode/DerivedData/VoiceCapture-fsjkbtoxxlfkxtfulelfpovirebd/Build/Products/Debug/VoiceCapture.app/Contents/MacOS/VoiceCapture" }
+		1: <string: 0xc86dcde60> { length = 29, contents = "-NSDocumentRevisionsDebugMode" }
+		2: <string: 0xc86dcf420> { length = 3, contents = "YES" }
+	}
+	"Program" => <string: 0xc86dcc390> { length = 153, contents = "/Users/kk/Library/Developer/Xcode/DerivedData/VoiceCapture-fsjkbtoxxlfkxtfulelfpovirebd/Build/Products/Debug/VoiceCapture.app/Contents/MacOS/VoiceCapture" }
+}
+デフォルト	17:00:25.839313+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] is not RunningBoard jetsam managed.
+デフォルト	17:00:25.839349+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] This process will not be managed.
+デフォルト	17:00:25.839374+0900	runningboardd	Now tracking process: [app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606]
+デフォルト	17:00:25.839595+0900	runningboardd	Calculated state for app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>: running-active (role: UserInteractive) (endowments: <private>)
+デフォルト	17:00:25.840456+0900	gamepolicyd	Hit the server for a process handle ec000b50000584e that resolved to: [app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606]
+デフォルト	17:00:25.840514+0900	gamepolicyd	Received state update for 22606 (app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>, running-active-NotVisible
+デフォルト	17:00:25.846733+0900	runningboardd	Using default underlying assertion for app: [app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606]
+デフォルト	17:00:25.846820+0900	runningboardd	Acquiring assertion targeting [app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] from originator [app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] with description <RBSAssertionDescriptor| "RB Underlying Assertion" ID:393-393-4613 target:22606 attributes:[
+	<RBSDomainAttribute| domain:"com.apple.underlying" name:"defaultUnderlyingAppAssertion" sourceEnvironment:"(null)">,
+	<RBSAcquisitionCompletionAttribute| policy:AfterApplication>
+	]>
+デフォルト	17:00:25.846950+0900	runningboardd	Assertion 393-393-4613 (target:[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606]) will be created as active
+デフォルト	17:00:25.847215+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring jetsam update because this process is not memory-managed
+デフォルト	17:00:25.847244+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring suspend because this process is not lifecycle managed
+デフォルト	17:00:25.847304+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Set darwin role to: UserInteractive
+デフォルト	17:00:25.847341+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring GPU update because this process is not GPU managed
+デフォルト	17:00:25.847485+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring memory limit update because this process is not memory-managed
+デフォルト	17:00:25.847388+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] reported to RB as running
+デフォルト	17:00:25.849072+0900	runningboardd	Acquiring assertion targeting [app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] from originator [osservice<com.apple.coreservices.launchservicesd>:358] with description <RBSAssertionDescriptor| "uielement:22606" ID:393-358-4614 target:22606 attributes:[
+	<RBSDomainAttribute| domain:"com.apple.launchservicesd" name:"RoleUserInteractive" sourceEnvironment:"(null)">
+	]>
+デフォルト	17:00:25.849371+0900	runningboardd	Assertion 393-358-4614 (target:[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606]) will be created as active
+デフォルト	17:00:25.849965+0900	loginwindow	-[ApplicationManager checkInAppContext:eventData:] | ApplicationManager: Checked in app : VoiceCapture
+デフォルト	17:00:25.853840+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring jetsam update because this process is not memory-managed
+デフォルト	17:00:25.853975+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring suspend because this process is not lifecycle managed
+デフォルト	17:00:25.854057+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring GPU update because this process is not GPU managed
+デフォルト	17:00:25.854249+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring memory limit update because this process is not memory-managed
+デフォルト	17:00:25.854520+0900	runningboardd	Successfully acquired underlying assertion for [app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606]
+デフォルト	17:00:25.855824+0900	Xcode	49e63b30167b9880:49e63b30159933c0:Launch VoiceCapture: Console logging policy: Synchronously obtain os_logs via libLogRedirect, and read stdio from File Descriptors:
+デフォルト	17:00:25.856461+0900	Xcode	49e63b30167b9880:49e63b30159933c0:Launch VoiceCapture Finished
+デフォルト	17:00:25.856802+0900	Xcode	49e63b30167b9880:49e63b3015978cc0:Debug VoiceCapture Start
+デフォルト	17:00:25.868686+0900	runningboardd	Calculated state for app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>: running-active (role: UserInteractive) (endowments: <private>)
+デフォルト	17:00:25.869237+0900	runningboardd	Invalidating assertion 393-582-4612 (target:app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>) from originator [osservice<com.apple.coreservices.uiagent(501)>:582]
+デフォルト	17:00:25.869275+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring jetsam update because this process is not memory-managed
+デフォルト	17:00:25.869434+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring suspend because this process is not lifecycle managed
+デフォルト	17:00:25.869558+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring GPU update because this process is not GPU managed
+デフォルト	17:00:25.869653+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring memory limit update because this process is not memory-managed
+デフォルト	17:00:25.870901+0900	gamepolicyd	Received state update for 22606 (app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>, running-active-NotVisible
+デフォルト	17:00:25.873594+0900	Xcode	49e63b30167b9880:49e63b3015978cc0:Debug VoiceCapture: Using LLDBRPC. The LLDB framework is from /Applications/Xcode.app/Contents/SharedFrameworks:
+デフォルト	17:00:25.878988+0900	runningboardd	Calculated state for app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>: running-active (role: UserInteractive) (endowments: <private>)
+デフォルト	17:00:25.885474+0900	kernel	Allowing set_exception_ports from [debugserver] on [VoiceCapture] for entitled process/debugger
+デフォルト	17:00:25.899445+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring jetsam update because this process is not memory-managed
+デフォルト	17:00:25.899493+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring suspend because this process is not lifecycle managed
+デフォルト	17:00:25.899543+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring GPU update because this process is not GPU managed
+デフォルト	17:00:25.899652+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring memory limit update because this process is not memory-managed
+デフォルト	17:00:25.906375+0900	runningboardd	Calculated state for app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>: running-active (role: UserInteractive) (endowments: <private>)
+デフォルト	17:00:25.974299+0900	gamepolicyd	Received state update for 22606 (app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>, running-active-NotVisible
+デフォルト	17:00:26.922197+0900	Xcode	49e63b30167b9880:49e63b3015978cc0:Debug VoiceCapture: Attached to process with pid 22606:
+デフォルト	17:00:26.923777+0900	storekitagent	[71BBEE07] Entering -[StoreKitTestingService removeConfigurationForBundleID:completion:] for com.yourdomain.VoiceCapture by DTServiceHub
+デフォルト	17:00:27.068451+0900	kernel	VoiceCapture[22606] triggered unnest of range 0x1ee000000->0x1f0000000 of DYLD shared region in VM map 0x902c6d357e1d20a9. While not abnormal for debuggers, this increases system memory footprint until the target exits.
+デフォルト	17:00:27.068463+0900	kernel	VoiceCapture[22606] triggered unnest of range 0x1f0000000->0x1f2000000 of DYLD shared region in VM map 0x902c6d357e1d20a9. While not abnormal for debuggers, this increases system memory footprint until the target exits.
+デフォルト	17:00:27.288204+0900	secinitd	VoiceCapture[22606]: root path for bundle "<private>" of main executable "<private>"
+デフォルト	17:00:27.298696+0900	secinitd	pid:22606 :: (null)/com.yourdomain.VoiceCapture (/Users/kk/Library/Developer/Xcode/DerivedData/VoiceCapture-fsjkbtoxxlfkxtfulelfpovirebd/Build/Products/Debug/VoiceCapture.app) is ad-hoc signed
+デフォルト	17:00:27.373533+0900	secinitd	VoiceCapture[22606]: AppSandbox request successful
+デフォルト	17:00:27.397444+0900	VoiceCapture	[0x600001858000] activating connection: mach=true listener=false peer=false name=com.apple.cfprefsd.daemon
+デフォルト	17:00:27.397495+0900	VoiceCapture	[0x6000018580f0] activating connection: mach=true listener=false peer=false name=com.apple.cfprefsd.agent
+デフォルト	17:00:27.400233+0900	VoiceCapture	[0x6000018581e0] activating connection: mach=true listener=false peer=false name=com.apple.coreservices.launchservicesd
+デフォルト	17:00:27.400768+0900	VoiceCapture	[0x6000018500f0] activating connection: mach=true listener=false peer=false name=com.apple.analyticsd
+デフォルト	17:00:27.400974+0900	VoiceCapture	[0x600001854000] activating connection: mach=true listener=false peer=false name=com.apple.pasteboard.1
+デフォルト	17:00:27.401340+0900	VoiceCapture	[0x600001850000] activating connection: mach=true listener=false peer=false name=com.apple.distributed_notifications@Uv3
+デフォルト	17:00:27.401659+0900	VoiceCapture	Received configuration update from daemon (initial)
+デフォルト	17:00:27.403255+0900	VoiceCapture	void _NSDisableAutomaticTerminationAndLog(NSString *) No windows open yet
+デフォルト	17:00:27.403826+0900	VoiceCapture	[0x6000018501e0] activating connection: mach=true listener=false peer=false name=com.apple.tccd.system
+デフォルト	17:00:27.404269+0900	tccd	AUTHREQ_ATTRIBUTION: msgID=22606.1, attribution={requesting={TCCDProcess: identifier=com.yourdomain.VoiceCapture, pid=22606, auid=501, euid=501, binary_path=/Users/kk/Library/Developer/Xcode/DerivedData/VoiceCapture-fsjkbtoxxlfkxtfulelfpovirebd/Build/Products/Debug/VoiceCapture.app/Contents/MacOS/VoiceCapture}, },
+デフォルト	17:00:27.406229+0900	tccd	AUTHREQ_SUBJECT: msgID=22606.1, subject=com.yourdomain.VoiceCapture,
+デフォルト	17:00:27.407458+0900	tccd	-[TCCDAccessIdentity staticCode]: static code for: identifier com.yourdomain.VoiceCapture, type: 0: 0x7542b1800 at /Users/kk/Library/Developer/Xcode/DerivedData/VoiceCapture-fsjkbtoxxlfkxtfulelfpovirebd/Build/Products/Debug/VoiceCapture.app
+デフォルト	17:00:27.408154+0900	VoiceCapture	[0x6000018501e0] invalidated after the last release of the connection object
+デフォルト	17:00:27.408349+0900	VoiceCapture	server port 0x00003507, session port 0x00003507
+デフォルト	17:00:27.410314+0900	tccd	AUTHREQ_ATTRIBUTION: msgID=386.383, attribution={accessing={TCCDProcess: identifier=com.yourdomain.VoiceCapture, pid=22606, auid=501, euid=501, binary_path=/Users/kk/Library/Developer/Xcode/DerivedData/VoiceCapture-fsjkbtoxxlfkxtfulelfpovirebd/Build/Products/Debug/VoiceCapture.app/Contents/MacOS/VoiceCapture}, requesting={TCCDProcess: identifier=com.apple.WindowServer, pid=386, auid=88, euid=88, binary_path=/System/Library/PrivateFrameworks/SkyLight.framework/Versions/A/Resources/WindowServer}, },
+デフォルト	17:00:27.410398+0900	tccd	requestor: TCCDProcess: identifier=com.apple.WindowServer, pid=386, auid=88, euid=88, binary_path=/System/Library/PrivateFrameworks/SkyLight.framework/Versions/A/Resources/WindowServer is checking access for accessor TCCDProcess: identifier=com.yourdomain.VoiceCapture, pid=22606, auid=501, euid=501, binary_path=/Users/kk/Library/Developer/Xcode/DerivedData/VoiceCapture-fsjkbtoxxlfkxtfulelfpovirebd/Build/Products/Debug/VoiceCapture.app/Contents/MacOS/VoiceCapture
+デフォルト	17:00:27.412918+0900	tccd	AUTHREQ_SUBJECT: msgID=386.383, subject=com.yourdomain.VoiceCapture,
+デフォルト	17:00:27.414567+0900	tccd	-[TCCDAccessIdentity staticCode]: static code for: identifier com.yourdomain.VoiceCapture, type: 0: 0x7542b1800 at /Users/kk/Library/Developer/Xcode/DerivedData/VoiceCapture-fsjkbtoxxlfkxtfulelfpovirebd/Build/Products/Debug/VoiceCapture.app
+デフォルト	17:00:27.418947+0900	VoiceCapture	New connection 0xf3fab main
+デフォルト	17:00:27.422120+0900	VoiceCapture	CHECKIN: pid=22606
+デフォルト	17:00:27.425590+0900	launchservicesd	CHECKIN:0x0-0xd40d4 22606 com.yourdomain.VoiceCapture
+デフォルト	17:00:27.425668+0900	VoiceCapture	CHECKEDIN: pid=22606 asn=0x0-0xd40d4 foreground=0
+デフォルト	17:00:27.425812+0900	runningboardd	Acquiring assertion targeting [app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] from originator [osservice<com.apple.coreservices.launchservicesd>:358] with description <RBSAssertionDescriptor| "uielement:22606" ID:393-358-4615 target:22606 attributes:[
+	<RBSDomainAttribute| domain:"com.apple.launchservicesd" name:"RoleUserInteractive" sourceEnvironment:"(null)">
+	]>
+デフォルト	17:00:27.425877+0900	runningboardd	Assertion 393-358-4615 (target:[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606]) will be created as active
+デフォルト	17:00:27.425832+0900	VoiceCapture	[0x135604700] activating connection: mach=false listener=true peer=false name=(anonymous)
+デフォルト	17:00:27.426266+0900	runningboardd	Invalidating assertion 393-358-4614 (target:[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606]) from originator [osservice<com.apple.coreservices.launchservicesd>:358]
+デフォルト	17:00:27.425841+0900	VoiceCapture	[0x135604700] Channel could not return listener port.
+デフォルト	17:00:27.425909+0900	VoiceCapture	[0x156a065a0] activating connection: mach=false listener=false peer=true name=com.apple.xpc.anonymous.0x135604700.peer[358].0x156a065a0
+デフォルト	17:00:27.426505+0900	loginwindow	-[ApplicationManager checkInAppContext:eventData:] | ApplicationManager: Checked in app : VoiceCapture
+デフォルト	17:00:27.427467+0900	VoiceCapture	FRONTLOGGING: version 1
+デフォルト	17:00:27.427520+0900	VoiceCapture	Registered, pid=22606 ASN=0x0,0xd40d4
+デフォルト	17:00:27.428668+0900	VoiceCapture	[0x135604700] Channel could not return listener port.
+デフォルト	17:00:27.429464+0900	VoiceCapture	BringForward: pid=22606 asn=0x0-0xd40d4 bringForward=0 foreground=0 uiElement=1 launchedByLS=1 modifiersCount=1 allDisabled=0
+デフォルト	17:00:27.429649+0900	VoiceCapture	BringFrontModifier: pid=22606 asn=0x0-0xd40d4 Modifier 0 hideAfter=0 hideOthers=0 dontMakeFrontmost=1 mouseDown=0/0 seed=0/0
+デフォルト	17:00:27.429292+0900	VoiceCapture	[0x156a06ae0] activating connection: mach=true listener=false peer=false name=com.apple.lsd.mapdb
+デフォルト	17:00:27.431386+0900	VoiceCapture	Current system appearance, (HLTB: 2), (SLS: 1)
+デフォルト	17:00:27.432459+0900	VoiceCapture	No persisted cache on this platform.
+エラー	17:00:27.433820+0900	kernel	Sandbox: VoiceCapture(22606) deny(1) iokit-open-user-client AppleNVMeEANUC
+デフォルト	17:00:27.433830+0900	VoiceCapture	IOServiceOpen failed for class 'AppleNVMeEAN'
+デフォルト	17:00:27.433841+0900	VoiceCapture	Could not open EAN service and connect
+デフォルト	17:00:27.433821+0900	kernel	IOUC AppleNVMeEANUC failed MACF in process pid 22606, VoiceCapture
+デフォルト	17:00:27.433847+0900	VoiceCapture	Failed to copy 'aptk' from EAN
+デフォルト	17:00:27.433883+0900	VoiceCapture	Failed to copy APTicket properties. Falling back to default policy.
+デフォルト	17:00:27.433950+0900	VoiceCapture	Creating default MGSysConfigPolicy
+デフォルト	17:00:27.434154+0900	VoiceCapture	syscfg is not initialized!
+デフォルト	17:00:27.434163+0900	VoiceCapture	CFDictionaryRef copySyscfgDictionary(void) enumeration of ADDA failed.
+デフォルト	17:00:27.434171+0900	VoiceCapture	Failed to find key ClrC
+デフォルト	17:00:27.435117+0900	VoiceCapture	Current system appearance, (HLTB: 2), (SLS: 1)
+デフォルト	17:00:27.435487+0900	VoiceCapture	Post-registration system appearance: (HLTB: 2)
+デフォルト	17:00:27.435655+0900	distnoted	register name: com.apple.universalaccess.VoiceOverSettingsDidChange object: kCFNotificationAnyObject token: 900000008 pid: 22606
+デフォルト	17:00:27.436376+0900	distnoted	register name: com.apple.universalaccess.VoiceOverSettingsDidChange object: kCFNotificationAnyObject token: 130000001a pid: 22606
+デフォルト	17:00:27.440633+0900	VoiceCapture	[0x135604700] Channel could not return listener port.
+デフォルト	17:00:27.441391+0900	distnoted	register name: com.apple.xctest.FakeForceTouchDevice object: com.yourdomain.VoiceCapture token: 1e00000021 pid: 22606
+デフォルト	17:00:27.446893+0900	VoiceCapture	[0x135604700] Channel could not return listener port.
+デフォルト	17:00:27.472878+0900	VoiceCapture	Registering for test daemon availability notify post.
+デフォルト	17:00:27.473005+0900	VoiceCapture	notify_get_state check indicated test daemon not ready.
+デフォルト	17:00:27.473104+0900	VoiceCapture	notify_get_state check indicated test daemon not ready.
+デフォルト	17:00:27.473196+0900	VoiceCapture	notify_get_state check indicated test daemon not ready.
+デフォルト	17:00:27.606683+0900	VoiceCapture	registering darwin observer for name: com.apple.gms.availability.notification
+デフォルト	17:00:27.606710+0900	VoiceCapture	registering darwin observer for name: com.apple.os-eligibility-domain.change.greymatter
+デフォルト	17:00:27.606734+0900	VoiceCapture	registering darwin observer for name: com.apple.language.changed
+デフォルト	17:00:27.606758+0900	VoiceCapture	isAvailable value changed: featureEnabled = true, isMDMAllowed = true, gmAvailable (current) = true
+デフォルト	17:00:27.610055+0900	VoiceCapture	-[NSApplication(NSAppssassination) _checkForAutomaticTerminationSupportPossiblyEnablingIt]_block_invoke Enabling automatic termination support.
+デフォルト	17:00:27.610697+0900	VoiceCapture	[0x6000018443c0] activating connection: mach=true listener=false peer=false name=com.apple.coreservices.appleevents
+デフォルト	17:00:27.611408+0900	VoiceCapture	[0x135604700] Channel could not return listener port.
+デフォルト	17:00:27.611680+0900	VoiceCapture	SignalReady: pid=22606 asn=0x0-0xd40d4
+デフォルト	17:00:27.611926+0900	VoiceCapture	SIGNAL: pid=22606 asn=0x0x-0xd40d4
+デフォルト	17:00:27.616663+0900	VoiceCapture	Requesting container lookup; personaid = -1, type = NOPERSONA, name = <unknown>, origin [pid = 0, personaid = 0], proximate [pid = 0, personaid = 0], class = 2, identifier = (null), group_identifier = (null), create = 0, temp = 0, euid = 501, uid = 501
+デフォルト	17:00:27.618860+0900	containermanagerd	Read [/Users/kk/Library/Containers/com.yourdomain.VoiceCapture/.com.apple.containermanagerd.metadata.plist], length = 33555, options = 0x2
+デフォルト	17:00:27.619189+0900	containermanagerd	Using client sandbox path [<~~~>]; metadata = <<~~~>(2);<501/20/~~/0/1001>;uB7F7A44E-1029-405C-8A15-5EBF6BB6934D;pcom.yourdomain.VoiceCapture;dp0;uma(null)>
+デフォルト	17:00:27.619378+0900	VoiceCapture	container_query_get_single_result: success
+デフォルト	17:00:27.619405+0900	VoiceCapture	container_create_or_lookup_for_platform: success
+デフォルト	17:00:27.621993+0900	VoiceCapture	[0x6000018545a0] activating connection: mach=false listener=false peer=false name=com.apple.hiservices-xpcservice
+デフォルト	17:00:27.625667+0900	tccd	-[TCCDAccessIdentity staticCode]: static code for: identifier com.yourdomain.VoiceCapture, type: 0: 0x7542b0300 at /Users/kk/Library/Developer/Xcode/DerivedData/VoiceCapture-fsjkbtoxxlfkxtfulelfpovirebd/Build/Products/Debug/VoiceCapture.app
+デフォルト	17:00:27.626600+0900	VoiceCapture	void _NSDisableAutomaticTerminationAndLog(NSString *) Restoring windows
+デフォルト	17:00:27.626637+0900	VoiceCapture	-[NSApplication _reopenWindowsAsNecessaryIncludingRestorableState:withFullFidelity:completionHandler:] shouldRestoreState=1 hasPersistentStateToRestore=0 shouldStillRestoreStateAfterPrompting=0
+デフォルト	17:00:27.626692+0900	VoiceCapture	[0x6000018442d0] activating connection: mach=true listener=false peer=false name=com.apple.window_proxies
+デフォルト	17:00:27.626763+0900	VoiceCapture	[0x6000018442d0] invalidated because the current process cancelled the connection by calling xpc_connection_cancel()
+デフォルト	17:00:27.627810+0900	VoiceCapture	void _NSEnableAutomaticTerminationAndLog(NSString *) Restoring windows
+デフォルト	17:00:27.629187+0900	VoiceCapture	[0x6000018442d0] activating connection: mach=true listener=false peer=false name=com.apple.tccd
+デフォルト	17:00:27.629348+0900	VoiceCapture	[com.yourdomain.VoiceCapture] Creating a user notification center
+デフォルト	17:00:27.629369+0900	VoiceCapture	[com.yourdomain.VoiceCapture] Getting notification settings (async)
+デフォルト	17:00:27.629463+0900	VoiceCapture	[com.yourdomain.VoiceCapture] Requesting authorization with options 6
+デフォルト	17:00:27.629529+0900	VoiceCapture	[com.yourdomain.VoiceCapture] Setting 2 notification categories
+デフォルト	17:00:27.629595+0900	VoiceCapture	[0x156a0b440] activating connection: mach=true listener=false peer=false name=com.apple.usernotifications.listener
+デフォルト	17:00:27.629719+0900	tccd	AUTHREQ_ATTRIBUTION: msgID=22606.2, attribution={requesting={TCCDProcess: identifier=com.yourdomain.VoiceCapture, pid=22606, auid=501, euid=501, binary_path=/Users/kk/Library/Developer/Xcode/DerivedData/VoiceCapture-fsjkbtoxxlfkxtfulelfpovirebd/Build/Products/Debug/VoiceCapture.app/Contents/MacOS/VoiceCapture}, },
+デフォルト	17:00:27.634923+0900	tccd	AUTHREQ_SUBJECT: msgID=22606.2, subject=com.yourdomain.VoiceCapture,
+デフォルト	17:00:27.635876+0900	tccd	-[TCCDAccessIdentity staticCode]: static code for: identifier com.yourdomain.VoiceCapture, type: 0: 0x8d830c900 at /Users/kk/Library/Developer/Xcode/DerivedData/VoiceCapture-fsjkbtoxxlfkxtfulelfpovirebd/Build/Products/Debug/VoiceCapture.app
+デフォルト	17:00:27.637849+0900	VoiceCapture	[0x6000018442d0] invalidated after the last release of the connection object
+デフォルト	17:00:27.638542+0900	VoiceCapture	[com.yourdomain.VoiceCapture] Got notification settings [ hasResult: 1 hasCompletionHandler: 1 ]
+デフォルト	17:00:27.638452+0900	usernoted	com.yourdomain.VoiceCapture setNotificationCategories: 2: ["TRANSCRIPTION_COMPLETE", "RECORDING_COMPLETE"]
+デフォルト	17:00:27.638566+0900	VoiceCapture	[com.yourdomain.VoiceCapture] Requested authorization [ didGrant: 1 hasError: 0 hasCompletionHandler: 1 ]
+デフォルト	17:00:27.651355+0900	VoiceCapture	Metal API Validation Enabled
+デフォルト	17:00:27.667637+0900	VoiceCapture	NSApp cache appearance:
+-NSRequiresAquaSystemAppearance: 0
+-appearance: (null)
+-effectiveAppearance: <NSCompositeAppearance: 0x600001558480
+ (
+    "<NSDarkAquaAppearance: 0x600001558510>",
+    "<NSSystemAppearance: 0x6000015582d0>"
+)>
+デフォルト	17:00:27.667639+0900	distnoted	register name: com.apple.nsquiet_safe_quit_give_reason object: com.yourdomain.VoiceCapture token: 4300000046 pid: 22606
+デフォルト	17:00:27.677016+0900	runningboardd	Acquiring assertion targeting [app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] from originator [osservice<com.apple.coreservices.launchservicesd>:358] with description <RBSAssertionDescriptor| "frontmost:22606" ID:393-358-4616 target:22606 attributes:[
+	<RBSDomainAttribute| domain:"com.apple.launchservicesd" name:"RoleUserInteractiveFocal" sourceEnvironment:"(null)">
+	]>
+デフォルト	17:00:27.677112+0900	runningboardd	Assertion 393-358-4616 (target:[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606]) will be created as active
+デフォルト	17:00:27.678663+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring jetsam update because this process is not memory-managed
+デフォルト	17:00:27.678751+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring suspend because this process is not lifecycle managed
+デフォルト	17:00:27.678958+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Set darwin role to: UserInteractiveFocal
+デフォルト	17:00:27.679074+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring GPU update because this process is not GPU managed
+デフォルト	17:00:27.679270+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring memory limit update because this process is not memory-managed
+デフォルト	17:00:27.680048+0900	runningboardd	Acquiring assertion targeting [app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] from originator [osservice<com.apple.coreservices.launchservicesd>:358] with description <RBSAssertionDescriptor| "notification:22606" ID:393-358-4617 target:22606 attributes:[
+	<RBSDomainAttribute| domain:"com.apple.launchservicesd" name:"LSNotification" sourceEnvironment:"(null)">
+	]>
+デフォルト	17:00:27.680171+0900	runningboardd	Assertion 393-358-4617 (target:[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606]) will be created as active
+デフォルト	17:00:27.686661+0900	VoiceCapture	[0x6000018585a0] activating connection: mach=true listener=false peer=false name=com.apple.dock.fullscreen
+デフォルト	17:00:27.688715+0900	VoiceCapture	[0x600001b54c00] activating connection: mach=true listener=false peer=false name=com.apple.fonts
+デフォルト	17:00:27.693627+0900	runningboardd	Calculated state for app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>: running-active (role: UserInteractiveFocal) (endowments: <private>)
+デフォルト	17:00:27.694091+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring jetsam update because this process is not memory-managed
+デフォルト	17:00:27.694134+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring suspend because this process is not lifecycle managed
+デフォルト	17:00:27.694190+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring GPU update because this process is not GPU managed
+デフォルト	17:00:27.694273+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring memory limit update because this process is not memory-managed
+デフォルト	17:00:27.695151+0900	gamepolicyd	Received state update for 22606 (app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>, running-active-NotVisible
+デフォルト	17:00:27.700145+0900	VoiceCapture	[0x13563caf0] activating connection: mach=true listener=false peer=false name=com.apple.FileCoordination
+デフォルト	17:00:27.700294+0900	VoiceCapture	Adding presenter A106B5CE-C38C-4E6B-9337-8EDAA2E4B99E for URL: file:///Users/kk/Library/Developer/Xcode/DerivedData/VoiceCapture-fsjkbtoxxlfkxtfulelfpovirebd/Build/Products/Debug/VoiceCapture.app/
+デフォルト	17:00:27.702348+0900	filecoordinationd	Hit the server for a process handle ec000b50000584e that resolved to: [app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606]
+デフォルト	17:00:27.702428+0900	filecoordinationd	Received state update for 22606 (app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>, running-active-NotVisible
+デフォルト	17:00:27.704511+0900	VoiceCapture	[0x156a16b10] activating connection: mach=true listener=false peer=false name=com.apple.windowmanager.server
+デフォルト	17:00:27.704564+0900	VoiceCapture	void _updateToReflectAutomaticTerminationState(void) Setting _kLSApplicationWouldBeTerminatedByTALKey=0
+デフォルト	17:00:27.705121+0900	WindowManager	Connection activated | (22606) VoiceCapture
+デフォルト	17:00:27.705214+0900	runningboardd	Calculated state for app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>: running-active (role: UserInteractiveFocal) (endowments: <private>)
+デフォルト	17:00:27.705931+0900	filecoordinationd	Received state update for 22606 (app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>, running-active-NotVisible
+デフォルト	17:00:27.705908+0900	gamepolicyd	Received state update for 22606 (app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>, running-active-NotVisible
+デフォルト	17:00:27.708102+0900	runningboardd	Acquiring assertion targeting [app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] from originator [osservice<com.apple.WindowServer(88)>:386] with description <RBSAssertionDescriptor| "AppVisible" ID:393-386-4618 target:22606 attributes:[
+	<RBSDomainAttribute| domain:"com.apple.appnap" name:"AppVisible" sourceEnvironment:"(null)">,
+	<RBSAcquisitionCompletionAttribute| policy:AfterApplication>
+	]>
+デフォルト	17:00:27.708143+0900	runningboardd	Assertion 393-386-4618 (target:[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606]) will be created as active
+デフォルト	17:00:27.708411+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring jetsam update because this process is not memory-managed
+デフォルト	17:00:27.708444+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring suspend because this process is not lifecycle managed
+デフォルト	17:00:27.708475+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring GPU update because this process is not GPU managed
+デフォルト	17:00:27.708590+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring memory limit update because this process is not memory-managed
+デフォルト	17:00:27.717302+0900	runningboardd	Calculated state for app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>: running-active (role: UserInteractiveFocal) (endowments: <private>)
+デフォルト	17:00:27.717678+0900	gamepolicyd	Received state update for 22606 (app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>, running-active-NotVisible
+デフォルト	17:00:27.717616+0900	runningboardd	Acquiring assertion targeting [app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] from originator [osservice<com.apple.WindowServer(88)>:386] with description <RBSAssertionDescriptor| "AppDrawing" ID:393-386-4619 target:22606 attributes:[
+	<RBSDomainAttribute| domain:"com.apple.appnap" name:"AppDrawing" sourceEnvironment:"(null)">,
+	<RBSAcquisitionCompletionAttribute| policy:AfterApplication>
+	]>
+デフォルト	17:00:27.717648+0900	filecoordinationd	Received state update for 22606 (app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>, running-active-NotVisible
+デフォルト	17:00:27.717652+0900	runningboardd	Assertion 393-386-4619 (target:[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606]) will be created as active
+デフォルト	17:00:27.718159+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring jetsam update because this process is not memory-managed
+デフォルト	17:00:27.718206+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring suspend because this process is not lifecycle managed
+デフォルト	17:00:27.718260+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring GPU update because this process is not GPU managed
+デフォルト	17:00:27.718353+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring memory limit update because this process is not memory-managed
+デフォルト	17:00:27.725362+0900	runningboardd	Calculated state for app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>: running-active (role: UserInteractiveFocal) (endowments: <private>)
+デフォルト	17:00:27.725861+0900	filecoordinationd	Received state update for 22606 (app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>, running-active-NotVisible
+デフォルト	17:00:27.725905+0900	gamepolicyd	Received state update for 22606 (app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>, running-active-NotVisible
+デフォルト	17:00:27.727951+0900	tccd	AUTHREQ_ATTRIBUTION: msgID=386.384, attribution={accessing={TCCDProcess: identifier=com.yourdomain.VoiceCapture, pid=22606, auid=501, euid=501, binary_path=/Users/kk/Library/Developer/Xcode/DerivedData/VoiceCapture-fsjkbtoxxlfkxtfulelfpovirebd/Build/Products/Debug/VoiceCapture.app/Contents/MacOS/VoiceCapture}, requesting={TCCDProcess: identifier=com.apple.WindowServer, pid=386, auid=88, euid=88, binary_path=/System/Library/PrivateFrameworks/SkyLight.framework/Versions/A/Resources/WindowServer}, },
+デフォルト	17:00:27.727973+0900	tccd	requestor: TCCDProcess: identifier=com.apple.WindowServer, pid=386, auid=88, euid=88, binary_path=/System/Library/PrivateFrameworks/SkyLight.framework/Versions/A/Resources/WindowServer is checking access for accessor TCCDProcess: identifier=com.yourdomain.VoiceCapture, pid=22606, auid=501, euid=501, binary_path=/Users/kk/Library/Developer/Xcode/DerivedData/VoiceCapture-fsjkbtoxxlfkxtfulelfpovirebd/Build/Products/Debug/VoiceCapture.app/Contents/MacOS/VoiceCapture
+デフォルト	17:00:27.729078+0900	tccd	AUTHREQ_SUBJECT: msgID=386.384, subject=com.yourdomain.VoiceCapture,
+デフォルト	17:00:27.730305+0900	tccd	-[TCCDAccessIdentity staticCode]: static code for: identifier com.yourdomain.VoiceCapture, type: 0: 0x7542b0300 at /Users/kk/Library/Developer/Xcode/DerivedData/VoiceCapture-fsjkbtoxxlfkxtfulelfpovirebd/Build/Products/Debug/VoiceCapture.app
+デフォルト	17:00:27.738336+0900	VoiceCapture	[0x600001850960] activating connection: mach=false listener=false peer=false name=com.apple.ViewBridgeAuxiliary
+デフォルト	17:00:27.738703+0900	VoiceCapture	[0x130804080] activating connection: mach=false listener=false peer=false name=(anonymous)
+デフォルト	17:00:27.738976+0900	VoiceCapture	[0x13562dfb0] activating connection: mach=false listener=true peer=false name=(anonymous)
+デフォルト	17:00:27.739041+0900	VoiceCapture	[0x13562dfb0] Channel could not return listener port.
+デフォルト	17:00:27.739382+0900	VoiceCapture	[0x600001850960] invalidated after the last release of the connection object
+デフォルト	17:00:27.741405+0900	runningboardd	Acquiring assertion targeting [app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] from originator [osservice<com.apple.WindowServer(88)>:386] with description <RBSAssertionDescriptor| "FUSBProcessWindowState: visible" ID:393-386-4620 target:22606 attributes:[
+	<RBSDomainAttribute| domain:"com.apple.fuseboard" name:"Visible" sourceEnvironment:"(null)">,
+	<RBSAcquisitionCompletionAttribute| policy:AfterApplication>
+	]>
+デフォルト	17:00:27.741461+0900	runningboardd	Assertion 393-386-4620 (target:[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606]) will be created as active
+デフォルト	17:00:27.741791+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring jetsam update because this process is not memory-managed
+デフォルト	17:00:27.741868+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring suspend because this process is not lifecycle managed
+デフォルト	17:00:27.741986+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring GPU update because this process is not GPU managed
+デフォルト	17:00:27.742305+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring memory limit update because this process is not memory-managed
+デフォルト	17:00:27.742451+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] visiblity is yes
+デフォルト	17:00:27.749756+0900	runningboardd	Calculated state for app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>: running-active (role: UserInteractiveFocal) (endowments: <private>)
+デフォルト	17:00:27.750186+0900	gamepolicyd	Received state update for 22606 (app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>, running-active-NotVisible
+デフォルト	17:00:27.750170+0900	filecoordinationd	Received state update for 22606 (app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>, running-active-NotVisible
+デフォルト	17:00:27.765054+0900	VoiceCapture	order window front conditionally: 373 related: 0
+デフォルト	17:00:27.765090+0900	VoiceCapture	void _NSEnableAutomaticTerminationAndLog(NSString *) No windows open yet
+デフォルト	17:00:27.765414+0900	VoiceCapture	establishing connection to agent
+デフォルト	17:00:27.765450+0900	VoiceCapture	[0x60000046f020] Session created.
+デフォルト	17:00:27.765460+0900	VoiceCapture	[0x60000046f020] Session created from connection [0x600001858a50]
+デフォルト	17:00:27.765475+0900	VoiceCapture	[0x600001858a50] activating connection: mach=true listener=false peer=false name=com.apple.uiintelligencesupport.agent
+デフォルト	17:00:27.765546+0900	VoiceCapture	[0x60000046f020] Session activated
+エラー	17:00:27.770479+0900	VoiceCapture	networkd_settings_read_from_file Sandbox is preventing this process from reading networkd settings file at "/Library/Preferences/com.apple.networkd.plist", please add an exception.
+エラー	17:00:27.770463+0900	kernel	Sandbox: VoiceCapture(22606) deny(1) file-read-data /Library/Preferences/com.apple.networkd.plist
+エラー	17:00:27.770634+0900	VoiceCapture	networkd_settings_read_from_file Sandbox is preventing this process from reading networkd settings file at "/Library/Preferences/com.apple.networkd.plist", please add an exception.
+デフォルト	17:00:27.771564+0900	VoiceCapture	Task <6DD0C75C-E622-40D7-ACF8-9A693C434347>.<1> resuming, timeouts(60.0, 604800.0) qos(0x19) voucher((null)) activity(00000000-0000-0000-0000-000000000000)
+エラー	17:00:27.772774+0900	kernel	1 duplicate report for Sandbox: VoiceCapture(22606) deny(1) file-read-data /Library/Preferences/com.apple.networkd.plist
+エラー	17:00:27.772782+0900	kernel	Sandbox: VoiceCapture(22606) deny(1) mach-lookup com.apple.AppSSO.service-xpc
+デフォルト	17:00:27.774394+0900	VoiceCapture	Initializing connection
+デフォルト	17:00:27.774425+0900	VoiceCapture	Removing all cached process handles
+デフォルト	17:00:27.774447+0900	VoiceCapture	Sending handshake request attempt #1 to server
+デフォルト	17:00:27.774456+0900	VoiceCapture	Creating connection to com.apple.runningboard
+デフォルト	17:00:27.774465+0900	VoiceCapture	[0x600001844690] activating connection: mach=true listener=false peer=false name=com.apple.runningboard
+デフォルト	17:00:27.774807+0900	runningboardd	Setting client for [app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] as ready
+デフォルト	17:00:27.775171+0900	VoiceCapture	Handshake succeeded
+デフォルト	17:00:27.775315+0900	runningboardd	Acquiring assertion targeting [app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] from originator [app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] with description <RBSAssertionDescriptor| "com.apple.CFNetwork.StorageDB" ID:393-22606-4621 target:22606 attributes:[
+	<RBSDomainAttribute| domain:"com.apple.common" name:"FinishTaskUninterruptable" sourceEnvironment:"(null)">,
+	<RBSAcquisitionCompletionAttribute| policy:AfterApplication>
+	]>
+デフォルト	17:00:27.775362+0900	runningboardd	Assertion 393-22606-4621 (target:[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606]) will be created as inactive as start-time-defining assertions exist
+デフォルト	17:00:27.775186+0900	VoiceCapture	Identity resolved as app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>
+デフォルト	17:00:27.777569+0900	VoiceCapture	Initializing NSHTTPCookieStorage singleton
+デフォルト	17:00:27.777580+0900	VoiceCapture	Initializing CFHTTPCookieStorage singleton
+デフォルト	17:00:27.777585+0900	VoiceCapture	Creating default cookie storage with default identifier
+デフォルト	17:00:27.777787+0900	VoiceCapture	Initializing AlternativeServices Storage singleton
+デフォルト	17:00:27.778397+0900	VoiceCapture	Garbage collection for alternative services
+デフォルト	17:00:27.779330+0900	VoiceCapture	Connection 1: enabling TLS
+デフォルト	17:00:27.779339+0900	VoiceCapture	Connection 1: starting, TC(0x0)
+デフォルト	17:00:27.779355+0900	VoiceCapture	[C1 69FB1FE6-966D-4E62-851D-182963F58CDA huggingface.co:443 tcp, url: https://huggingface.co/api/models/argmaxinc/whisperkit-coreml, tls, definite, attribution: developer, context: com.apple.CFNetwork.NSURLSession.{EE81CD03-7395-4DD4-A3AB-11C541409DCB}{(null)}{Y}{2}{0x0} (private), proc: 9C3D222F-182B-3768-8157-B66D9B938543] start
+デフォルト	17:00:27.779381+0900	VoiceCapture	[C1 huggingface.co:443 initial parent-flow ((null))] event: path:start @0.000s
+デフォルト	17:00:27.779647+0900	VoiceCapture	[C1 huggingface.co:443 waiting parent-flow (satisfied (Path is satisfied), interface: en0, ipv4, dns)] event: path:satisfied @0.000s, uuid: 7D74862D-1347-4931-87C4-6EB1C0A9E5C6
+デフォルト	17:00:27.779835+0900	VoiceCapture	[C1 huggingface.co:443 in_progress parent-flow (satisfied (Path is satisfied), interface: en0, ipv4, dns)] event: flow:start_connect @0.000s
+デフォルト	17:00:27.779844+0900	VoiceCapture	nw_connection_report_state_with_handler_on_nw_queue [C1] reporting state preparing
+デフォルト	17:00:27.779966+0900	VoiceCapture	[C1 huggingface.co:443 in_progress parent-flow (satisfied (Path is satisfied), interface: en0, ipv4, dns)] event: flow:start_child @0.000s
+デフォルト	17:00:27.780872+0900	VoiceCapture	[C1.1 huggingface.co:443 initial path ((null))] event: path:start @0.001s
+デフォルト	17:00:27.781347+0900	VoiceCapture	[C1.1 huggingface.co:443 waiting path (satisfied (Path is satisfied), interface: en0, ipv4, dns)] event: path:satisfied @0.001s, uuid: 7D74862D-1347-4931-87C4-6EB1C0A9E5C6
+エラー	17:00:27.781586+0900	kernel	Sandbox: VoiceCapture(22606) deny(1) network-outbound /private/var/run/mDNSResponder
+デフォルト	17:00:27.781455+0900	VoiceCapture	[C1.1 huggingface.co:443 in_progress resolver (satisfied (Path is satisfied), interface: en0, ipv4, dns)] event: resolver:start_dns @0.002s
+エラー	17:00:27.781497+0900	VoiceCapture	nw_resolver_can_use_dns_xpc_block_invoke Sandbox does not allow access to com.apple.dnssd.service
+デフォルト	17:00:27.781836+0900	VoiceCapture	dnssd_clientstub ConnectToServer: connect() failed path:/var/run/mDNSResponder Socket:11 Err:-1 Errno:1 Operation not permitted
+エラー	17:00:27.781857+0900	VoiceCapture	nw_resolver_create_dns_service_locked [C1.1] DNSServiceCreateDelegateConnection failed: ServiceNotRunning(-65563)
+デフォルト	17:00:27.781900+0900	VoiceCapture	Task <6DD0C75C-E622-40D7-ACF8-9A693C434347>.<1> setting up Connection 1
+デフォルト	17:00:27.782279+0900	VoiceCapture	[C1.1 huggingface.co:443 in_progress resolver (satisfied (Path is satisfied), interface: en0, ipv4, dns)] event: path:trigger @0.002s, uuid: 7D74862D-1347-4931-87C4-6EB1C0A9E5C6
+エラー	17:00:27.782829+0900	kernel	Sandbox: VoiceCapture(22606) deny(1) mach-lookup com.apple.usymptomsd
+デフォルト	17:00:27.782733+0900	VoiceCapture	[C1.1 huggingface.co:443 failed resolver (satisfied (Path is satisfied), interface: en0, ipv4, dns)] event: resolver:receive_dns @0.003s, error DNS Error: ServiceNotRunning
+デフォルト	17:00:27.782784+0900	VoiceCapture	[0x600001858c30] activating connection: mach=true listener=false peer=false name=com.apple.usymptomsd
+デフォルト	17:00:27.782852+0900	VoiceCapture	[0x600001858c30] failed to do a bootstrap look-up: xpc_error=[159: Unknown error: 159]
+デフォルト	17:00:27.782938+0900	VoiceCapture	[0x600001858c30] invalidated after a failed init
+デフォルト	17:00:27.783003+0900	VoiceCapture	[0x600001858e10] activating connection: mach=true listener=false peer=false name=com.apple.usymptomsd
+デフォルト	17:00:27.783113+0900	VoiceCapture	[0x600001858e10] failed to do a bootstrap look-up: xpc_error=[159: Unknown error: 159]
+デフォルト	17:00:27.783123+0900	VoiceCapture	[C1 huggingface.co:443 failed parent-flow (satisfied (Path is satisfied), interface: en0, ipv4, dns)] event: flow:child_failed @0.003s
+デフォルト	17:00:27.783162+0900	VoiceCapture	[0x600001858e10] invalidated after a failed init
+デフォルト	17:00:27.783207+0900	VoiceCapture	nw_connection_report_state_with_handler_on_nw_queue [C1] reporting state failed error DNS Error: ServiceNotRunning
+エラー	17:00:27.783343+0900	VoiceCapture	Connection 1: received failure notification
+エラー	17:00:27.783395+0900	VoiceCapture	Connection 1: failed to connect 10:-72000, reason -1
+エラー	17:00:27.783428+0900	VoiceCapture	Connection 1: encountered error(10:-72000)
+デフォルト	17:00:27.783473+0900	VoiceCapture	Connection 1: cleaning up
+デフォルト	17:00:27.783541+0900	VoiceCapture	Connection 1: summary for unused connection {protocol="(null)", domain_lookup_duration_ms=0, connect_duration_ms=0, secure_connection_duration_ms=0, private_relay=false, idle_duration_ms=0}
+デフォルト	17:00:27.783607+0900	VoiceCapture	[C1 69FB1FE6-966D-4E62-851D-182963F58CDA huggingface.co:443 tcp, url: https://huggingface.co/api/models/argmaxinc/whisperkit-coreml, tls, definite, attribution: developer] cancel
+デフォルト	17:00:27.783744+0900	VoiceCapture	[C1 huggingface.co:443 tcp, url: https://huggingface.co/api/models/argmaxinc/whisperkit-coreml, tls, definite, attribution: developer] cancelled
+デフォルト	17:00:27.784104+0900	VoiceCapture	nw_connection_report_state_with_handler_on_nw_queue [C1] reporting state cancelled error DNS Error: ServiceNotRunning
+デフォルト	17:00:27.784324+0900	VoiceCapture	Task <6DD0C75C-E622-40D7-ACF8-9A693C434347>.<1> can retry(N) with reason(2) for error [10:-72000]
+エラー	17:00:27.784509+0900	VoiceCapture	Task <6DD0C75C-E622-40D7-ACF8-9A693C434347>.<1> HTTP load failed, 0/0 bytes (error code: -1003 [10:-72000])
+デフォルト	17:00:27.792422+0900	VoiceCapture	Task <6DD0C75C-E622-40D7-ACF8-9A693C434347>.<1> summary for task failure {transaction_duration_ms=18, response_status=-1, connection=1, reused=1, reused_after_ms=0, request_start_ms=0, request_duration_ms=0, response_start_ms=0, response_duration_ms=0, request_bytes=0, request_throughput_kbps=0, response_bytes=0, response_throughput_kbps=0, cache_hit=false}
+エラー	17:00:27.792689+0900	VoiceCapture	Task <6DD0C75C-E622-40D7-ACF8-9A693C434347>.<1> finished with error [-1003] Error Domain=NSURLErrorDomain Code=-1003 "A server with the specified hostname could not be found." UserInfo={_kCFStreamErrorCodeKey=-72000, NSUnderlyingError=0x6000029d3c30 {Error Domain=kCFErrorDomainCFNetwork Code=-1003 "(null)" UserInfo={_kCFStreamErrorDomainKey=10, _kCFStreamErrorCodeKey=-72000, _NSURLErrorNWResolutionReportKey=Resolved 0 endpoints in 1ms using unknown from query, _NSURLErrorNWPathKey=satisfied (Path is satisfied), interface: en0, ipv4, dns}}, _NSURLErrorFailingURLSessionTaskErrorKey=LocalDataTask <6DD0C75C-E622-40D7-ACF8-9A693C434347>.<1>, _NSURLErrorRelatedURLSessionTaskErrorKey=(
+    "LocalDataTask <6DD0C75C-E622-40D7-ACF8-9A693C434347>.<1>"
+), NSLocalizedDescription=A server with the specified hostname could not be found., NSErrorFailingURLStringKey=https://huggingface.co/api/models/argmaxinc/whisperkit-coreml, NSErrorFailingURLKey=https://huggingface.co/api/models/argmaxinc/whisperkit-coreml, _kCFStreamErrorDomainKey=10}
+エラー	17:00:27.795619+0900	VoiceCapture	Model not found. Please check the model or repo name and try again.
+Error: Error Domain=NSURLErrorDomain Code=-1003 "A server with the specified hostname could not be found." UserInfo={_kCFStreamErrorCodeKey=-72000, NSUnderlyingError=0x6000029d3c30 {Error Domain=kCFErrorDomainCFNetwork Code=-1003 "(null)" UserInfo={_kCFStreamErrorDomainKey=10, _kCFStreamErrorCodeKey=-72000, _NSURLErrorNWResolutionReportKey=Resolved 0 endpoints in 1ms using unknown from query, _NSURLErrorNWPathKey=satisfied (Path is satisfied), interface: en0, ipv4, dns}}, _NSURLErrorFailingURLSessionTaskErrorKey=LocalDataTask <6DD0C75C-E622-40D7-ACF8-9A693C434347>.<1>, _NSURLErrorRelatedURLSessionTaskErrorKey=(
+    "LocalDataTask <6DD0C75C-E622-40D7-ACF8-9A693C434347>.<1>"
+), NSLocalizedDescription=A server with the specified hostname could not be found., NSErrorFailingURLStringKey=https://huggingface.co/api/models/argmaxinc/whisperkit-coreml, NSErrorFailingURLKey=https://huggingface.co/api/models/argmaxinc/whisperkit-coreml, _kCFStreamErrorDomainKey=10}
+エラー	17:00:27.795733+0900	VoiceCapture	Model download failed: Model not found. Please check the model or repo name and try again.
+Error: Error Domain=NSURLErrorDomain Code=-1003 "A server with the specified hostname could not be found." UserInfo={_kCFStreamErrorCodeKey=-72000, NSUnderlyingError=0x6000029d3c30 {Error Domain=kCFErrorDomainCFNetwork Code=-1003 "(null)" UserInfo={_kCFStreamErrorDomainKey=10, _kCFStreamErrorCodeKey=-72000, _NSURLErrorNWResolutionReportKey=Resolved 0 endpoints in 1ms using unknown from query, _NSURLErrorNWPathKey=satisfied (Path is satisfied), interface: en0, ipv4, dns}}, _NSURLErrorFailingURLSessionTaskErrorKey=LocalDataTask <6DD0C75C-E622-40D7-ACF8-9A693C434347>.<1>, _NSURLErrorRelatedURLSessionTaskErrorKey=(
+    "LocalDataTask <6DD0C75C-E622-40D7-ACF8-9A693C434347>.<1>"
+), NSLocalizedDescription=A server with the specified hostname could not be found., NSErrorFailingURLStringKey=https://huggingface.co/api/models/argmaxinc/whisperkit-coreml, NSErrorFailingURLKey=https://huggingface.co/api/models/argmaxinc/whisperkit-coreml, _kCFStreamErrorDomainKey=10}
+エラー	17:00:27.798552+0900	VoiceCapture	Error domain: WhisperKit.WhisperError, code: 1
+エラー	17:00:27.798582+0900	VoiceCapture	Error userInfo: [:]
+エラー	17:00:27.798605+0900	VoiceCapture	Model not found. Please check the model or repo name and try again.
+Error: Error Domain=NSURLErrorDomain Code=-1003 "A server with the specified hostname could not be found." UserInfo={_kCFStreamErrorCodeKey=-72000, NSUnderlyingError=0x6000029d3c30 {Error Domain=kCFErrorDomainCFNetwork Code=-1003 "(null)" UserInfo={_kCFStreamErrorDomainKey=10, _kCFStreamErrorCodeKey=-72000, _NSURLErrorNWResolutionReportKey=Resolved 0 endpoints in 1ms using unknown from query, _NSURLErrorNWPathKey=satisfied (Path is satisfied), interface: en0, ipv4, dns}}, _NSURLErrorFailingURLSessionTaskErrorKey=LocalDataTask <6DD0C75C-E622-40D7-ACF8-9A693C434347>.<1>, _NSURLErrorRelatedURLSessionTaskErrorKey=(
+    "LocalDataTask <6DD0C75C-E622-40D7-ACF8-9A693C434347>.<1>"
+), NSLocalizedDescription=A server with the specified hostname could not be found., NSErrorFailingURLStringKey=https://huggingface.co/api/models/argmaxinc/whisperkit-coreml, NSErrorFailingURLKey=https://huggingface.co/api/models/argmaxinc/whisperkit-coreml, _kCFStreamErrorDomainKey=10}
+エラー	17:00:27.798852+0900	VoiceCapture	Model not found. Please check the model or repo name and try again.
+Error: Error Domain=NSURLErrorDomain Code=-1003 "A server with the specified hostname could not be found." UserInfo={_kCFStreamErrorCodeKey=-72000, NSUnderlyingError=0x6000029d3c30 {Error Domain=kCFErrorDomainCFNetwork Code=-1003 "(null)" UserInfo={_kCFStreamErrorDomainKey=10, _kCFStreamErrorCodeKey=-72000, _NSURLErrorNWResolutionReportKey=Resolved 0 endpoints in 1ms using unknown from query, _NSURLErrorNWPathKey=satisfied (Path is satisfied), interface: en0, ipv4, dns}}, _NSURLErrorFailingURLSessionTaskErrorKey=LocalDataTask <6DD0C75C-E622-40D7-ACF8-9A693C434347>.<1>, _NSURLErrorRelatedURLSessionTaskErrorKey=(
+    "LocalDataTask <6DD0C75C-E622-40D7-ACF8-9A693C434347>.<1>"
+), NSLocalizedDescription=A server with the specified hostname could not be found., NSErrorFailingURLStringKey=https://huggingface.co/api/models/argmaxinc/whisperkit-coreml, NSErrorFailingURLKey=https://huggingface.co/api/models/argmaxinc/whisperkit-coreml, _kCFStreamErrorDomainKey=10}
+エラー	17:00:27.799567+0900	VoiceCapture	Model download failed: 文字起こしに失敗しました: モデル 'medium' の検索に失敗しました。
+詳細: Model not found. Please check the model or repo name and try again.
+Error: Error Domain=NSURLErrorDomain Code=-1003 "A server with the specified hostname could not be found." UserInfo={_kCFStreamErrorCodeKey=-72000, NSUnderlyingError=0x6000029d3c30 {Error Domain=kCFErrorDomainCFNetwork Code=-1003 "(null)" UserInfo={_kCFStreamErrorDomainKey=10, _kCFStreamErrorCodeKey=-72000, _NSURLErrorNWResolutionReportKey=Resolved 0 endpoints in 1ms using unknown from query, _NSURLErrorNWPathKey=satisfied (Path is satisfied), interface: en0, ipv4, dns}}, _NSURLErrorFailingURLSessionTaskErrorKey=LocalDataTask <6DD0C75C-E622-40D7-ACF8-9A693C434347>.<1>, _NSURLErrorRelatedURLSessionTaskErrorKey=(
+    "LocalDataTask <6DD0C75C-E622-40D7-ACF8-9A693C434347>.<1>"
+), NSLocalizedDescription=A server with the specified hostname could not be found., NSErrorFailingURLStringKey=https://huggingface.co/api/models/argmaxinc/whisperkit-coreml, NSErrorFailingURLKey=https://huggingface.co/api/models/argmaxinc/whisperkit-coreml, _kCFStreamErrorDomainKey=10}
+
+考えられる原因:
+- モデル名の曖昧性（複数のモデルにマッチ）
+- インターネット接続の問題
+
+インターネット接続を確認してください。
+デフォルト	17:00:27.966295+0900	VoiceCapture	+[IMKClient subclass]: chose IMKClient_Modern
+デフォルト	17:00:27.966315+0900	VoiceCapture	+[IMKInputSession subclass]: chose IMKInputSession_Modern
+デフォルト	17:00:27.968359+0900	VoiceCapture	[0x125621210] activating connection: mach=true listener=false peer=false name=com.apple.inputmethodkit.getxpcendpoint
+デフォルト	17:00:27.969495+0900	VoiceCapture	[0x145651e30] activating connection: mach=false listener=false peer=false name=(anonymous)
+エラー	17:00:28.090828+0900	kernel	1 duplicate report for Sandbox: VoiceCapture(22606) deny(1) mach-lookup com.apple.usymptomsd
+デフォルト	17:00:28.783473+0900	runningboardd	Invalidating assertion 393-22606-4621 (target:[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606]) from originator [app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606]
+デフォルト	17:00:31.827297+0900	runningboardd	Assertion did invalidate due to timeout: 393-393-4613 (target:[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606])
+デフォルト	17:00:32.029231+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring jetsam update because this process is not memory-managed
+デフォルト	17:00:32.029284+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring suspend because this process is not lifecycle managed
+デフォルト	17:00:32.029324+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring GPU update because this process is not GPU managed
+デフォルト	17:00:32.029388+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring memory limit update because this process is not memory-managed
+デフォルト	17:00:32.039731+0900	runningboardd	Calculated state for app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>: running-active (role: UserInteractiveFocal) (endowments: <private>)
+デフォルト	17:00:32.040299+0900	filecoordinationd	Received state update for 22606 (app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>, running-active-NotVisible
+デフォルト	17:00:32.040446+0900	gamepolicyd	Received state update for 22606 (app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>, running-active-NotVisible
+デフォルト	17:00:33.680439+0900	runningboardd	Assertion did invalidate due to timeout: 393-358-4617 (target:[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606])
+デフォルト	17:00:33.887437+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring jetsam update because this process is not memory-managed
+デフォルト	17:00:33.887458+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring suspend because this process is not lifecycle managed
+デフォルト	17:00:33.887474+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring GPU update because this process is not GPU managed
+デフォルト	17:00:33.887517+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring memory limit update because this process is not memory-managed
+デフォルト	17:00:33.898941+0900	runningboardd	Calculated state for app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>: running-active (role: UserInteractiveFocal) (endowments: <private>)
+デフォルト	17:00:33.899782+0900	filecoordinationd	Received state update for 22606 (app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>, running-active-NotVisible
+デフォルト	17:00:33.899956+0900	gamepolicyd	Received state update for 22606 (app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>, running-active-NotVisible
+デフォルト	17:00:35.197537+0900	runningboardd	Invalidating assertion 393-358-4616 (target:[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606]) from originator [osservice<com.apple.coreservices.launchservicesd>:358]
+デフォルト	17:00:35.310384+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring jetsam update because this process is not memory-managed
+デフォルト	17:00:35.310412+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring suspend because this process is not lifecycle managed
+デフォルト	17:00:35.310455+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Set darwin role to: UserInteractive
+デフォルト	17:00:35.310475+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring GPU update because this process is not GPU managed
+デフォルト	17:00:35.310549+0900	runningboardd	[app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>:22606] Ignoring memory limit update because this process is not memory-managed
+デフォルト	17:00:35.324700+0900	runningboardd	Calculated state for app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>: running-active (role: UserInteractive) (endowments: <private>)
+デフォルト	17:00:35.325392+0900	gamepolicyd	Received state update for 22606 (app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>, running-active-NotVisible
+デフォルト	17:00:35.325552+0900	filecoordinationd	Received state update for 22606 (app<application.com.yourdomain.VoiceCapture.11536929.11539140.31E758ED-3EC1-4633-9CC6-6035DCA552A6(501)>, running-active-NotVisible
+デフォルト	17:00:38.637532+0900	VoiceCapture	LSExceptions shared instance invalidated for timeout.
+デフォルト	17:00:53.968914+0900	Aqua Voice	-[NSPersistentUIManager flushAllChanges]
+デフォルト	17:00:53.970263+0900	Aqua Voice	-[NSPersistentUIManager flushAllChanges] finishing enqueued operations
+デフォルト	17:00:53.970324+0900	Aqua Voice	-[NSPersistentUIManager flushAllChanges]_block_invoke asyncing to main queue
+デフォルト	17:00:53.970360+0900	Aqua Voice	-[NSPersistentUIManager flushAllChanges]_block_invoke writing records

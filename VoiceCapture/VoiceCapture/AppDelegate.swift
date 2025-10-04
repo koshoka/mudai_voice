@@ -19,12 +19,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private var statusItem: NSStatusItem?
     private var recordingMenuItem: NSMenuItem?
     private var settingsWindow: NSWindow?
+    private var modelDownloadWindow: NSWindow?
 
     // Services
     private var audioRecordingService: AudioRecordingServiceProtocol!
     private var fileStorageService: FileStorageServiceProtocol!
     private var notificationService: NotificationServiceProtocol!
     private var transcriptionService: TranscriptionServiceProtocol!
+    private var modelDownloadManager: ModelDownloadManager!
 
     // ViewModels
     private var recordingViewModel: RecordingViewModel!
@@ -42,8 +44,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         setupViewModels()
         setupMenuBar()
         observeRecordingState()
+        observeTranscriptionState()
         // TODO: KeyboardShortcuts SPM追加後にコメント解除
         setupKeyboardShortcuts()
+
+        // モデルダウンロードチェック（非同期）
+        Task {
+            await checkAndDownloadModel()
+        }
     }
 
     // MARK: - Setup
@@ -61,7 +69,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private func showMicrophonePermissionAlert() {
         let alert = NSAlert()
         alert.messageText = "マイクへのアクセスが必要です"
-        alert.informativeText = "VoiceCaptureは録音機能のためにマイクへのアクセスが必要です。システム設定でマイクへのアクセスを許可してください。"
+        alert.informativeText = "nonvoiceは録音機能のためにマイクへのアクセスが必要です。システム設定でマイクへのアクセスを許可してください。"
         alert.alertStyle = .warning
         alert.addButton(withTitle: "システム設定を開く")
         alert.addButton(withTitle: "後で")
@@ -103,7 +111,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private func showNotificationPermissionAlert() {
         let alert = NSAlert()
         alert.messageText = "通知へのアクセスが必要です"
-        alert.informativeText = "VoiceCaptureは録音完了や文字起こし完了を通知するために、通知の送信が必要です。システム環境設定で通知を許可してください。"
+        alert.informativeText = "nonvoiceは録音完了や文字起こし完了を通知するために、通知の送信が必要です。システム環境設定で通知を許可してください。"
         alert.alertStyle = .informational
         alert.addButton(withTitle: "システム環境設定を開く")
         alert.addButton(withTitle: "後で")
@@ -123,6 +131,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         fileStorageService = FileStorageService()
         notificationService = NotificationService()
         transcriptionService = TranscriptionService()
+        modelDownloadManager = ModelDownloadManager()
     }
 
     private func setupViewModels() {
@@ -149,6 +158,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             .store(in: &cancellables)
     }
 
+    private func observeTranscriptionState() {
+        transcriptionViewModel.$status
+            .combineLatest(transcriptionViewModel.$progress)
+            .sink { [weak self] status, progress in
+                self?.updateTranscriptionProgress(status: status, progress: progress)
+            }
+            .store(in: &cancellables)
+    }
+
     // TODO: KeyboardShortcuts SPM追加後にコメント解除
 
     private func setupKeyboardShortcuts() {
@@ -159,6 +177,64 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
+    // MARK: - Model Download
+
+    private func checkAndDownloadModel() async {
+        AppLogger.modelDownload.info("Checking if model is downloaded...")
+
+        // モデルが既にダウンロード済みかチェック
+        if await modelDownloadManager.isModelDownloaded() {
+            AppLogger.modelDownload.info("Model already downloaded, skipping download")
+            return
+        }
+
+        // ダウンロードが必要な場合、UIを表示
+        AppLogger.modelDownload.info("Model not found, showing download window")
+        showModelDownloadWindow()
+
+        do {
+            // モデルダウンロード実行
+            try await modelDownloadManager.ensureModelDownloaded()
+
+            // ダウンロード完了後、少し待ってからウィンドウを閉じる
+            try? await Task.sleep(nanoseconds: 2_000_000_000) // 2秒待つ
+            closeModelDownloadWindow()
+
+        } catch {
+            AppLogger.modelDownload.error("Model download failed: \(error.localizedDescription)")
+            // エラーはModelDownloadViewで表示されるので、ここでは何もしない
+        }
+    }
+
+    private func showModelDownloadWindow() {
+        guard modelDownloadWindow == nil else {
+            modelDownloadWindow?.makeKeyAndOrderFront(nil)
+            return
+        }
+
+        let downloadView = ModelDownloadView(downloadManager: modelDownloadManager)
+        let hostingController = NSHostingController(rootView: downloadView)
+
+        let window = NSWindow(contentViewController: hostingController)
+        window.title = "WhisperKitモデルのダウンロード"
+        window.styleMask = [.titled, .closable]
+        window.center()
+        window.level = .floating
+
+        modelDownloadWindow = window
+        window.delegate = self
+
+        window.makeKeyAndOrderFront(nil)
+        NSApp.activate(ignoringOtherApps: true)
+
+        AppLogger.modelDownload.info("Model download window opened")
+    }
+
+    private func closeModelDownloadWindow() {
+        modelDownloadWindow?.close()
+        modelDownloadWindow = nil
+        AppLogger.modelDownload.info("Model download window closed")
+    }
 
     private func setupMenuBar() {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
@@ -167,9 +243,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             fatalError("Failed to create status bar button")
         }
 
-        // アイコン設定
-        button.image = NSImage(systemSymbolName: "mic.fill", accessibilityDescription: "VoiceCapture")
-        button.image?.isTemplate = true
+        // アイコン設定（水色で他のマイクアプリと区別）
+        // テンプレートモードを無効化してカラーを適用
+        if let baseImage = NSImage(systemSymbolName: "mic.fill", accessibilityDescription: "nonvoice") {
+            baseImage.isTemplate = false
+            let config = NSImage.SymbolConfiguration(hierarchicalColor: .cyan)
+            button.image = baseImage.withSymbolConfiguration(config)
+        }
 
         // メニュー構築
         setupMenu()
@@ -218,9 +298,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         settingsItem.target = self
         menu.addItem(settingsItem)
 
-        // VoiceCaptureについて
+        // nonvoiceについて
         let aboutItem = NSMenuItem(
-            title: "VoiceCaptureについて",
+            title: "nonvoiceについて",
             action: #selector(showAbout),
             keyEquivalent: ""
         )
@@ -245,8 +325,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         guard let button = statusItem?.button else { return }
 
         let iconName = isRecording ? "mic.circle.fill" : "mic.fill"
-        button.image = NSImage(systemSymbolName: iconName, accessibilityDescription: "VoiceCapture")
-        button.image?.isTemplate = true
+
+        // テンプレートモードを無効化して水色を適用
+        if let baseImage = NSImage(systemSymbolName: iconName, accessibilityDescription: "nonvoice") {
+            baseImage.isTemplate = false
+            let config = NSImage.SymbolConfiguration(hierarchicalColor: .cyan)
+            button.image = baseImage.withSymbolConfiguration(config)
+        }
 
         // アニメーションの追加・削除
         if isRecording {
@@ -292,6 +377,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         recordingMenuItem?.title = isRecording ? "録音停止" : "録音開始"
     }
 
+    private func updateTranscriptionProgress(status: TranscriptionViewModel.TranscriptionStatus, progress: Float) {
+        guard let button = statusItem?.button else { return }
+
+        switch status {
+        case .transcribing:
+            let percentage = Int(progress * 100)
+            button.toolTip = "文字起こし中... \(percentage)%"
+        case .idle, .completed, .failed:
+            button.toolTip = "nonvoice"
+        }
+    }
+
     // MARK: - Actions
 
     @objc private func toggleRecording() {
@@ -323,19 +420,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             window.setContentSize(NSSize(width: 500, height: 400))
             window.center()
 
+            // 設定ウィンドウを最前面に表示
+            window.level = .floating
+            window.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary]
+
             settingsWindow = window
             window.delegate = self
 
             AppLogger.settings.info("Settings window opened")
         }
 
-        settingsWindow?.makeKeyAndOrderFront(nil)
+        // アプリをアクティブ化して設定ウィンドウを最前面に表示
         NSApp.activate(ignoringOtherApps: true)
+        settingsWindow?.orderFrontRegardless()
     }
 
     @objc private func showAbout() {
         let alert = NSAlert()
-        alert.messageText = "VoiceCapture"
+        alert.messageText = "nonvoice"
         alert.informativeText = "Version 1.0.0\n\n録音の不安をゼロに、思考を音声で即座に記録し、自動で文字起こしして整理するmacOSアプリ。"
         alert.alertStyle = .informational
         alert.runModal()
@@ -353,6 +455,9 @@ extension AppDelegate: NSWindowDelegate {
         if notification.object as? NSWindow === settingsWindow {
             settingsWindow = nil
             AppLogger.settings.info("Settings window closed")
+        } else if notification.object as? NSWindow === modelDownloadWindow {
+            modelDownloadWindow = nil
+            AppLogger.modelDownload.info("Model download window closed by user")
         }
     }
 }

@@ -25,6 +25,10 @@ class TranscriptionViewModel: ObservableObject {
     private let notificationService: NotificationServiceProtocol
     private var cancellables = Set<AnyCancellable>()
 
+    // 進捗通知の頻度制限用
+    private var currentAudioURL: URL?
+    private var lastNotifiedProgress: Float = -1.0
+
     // MARK: - Nested Types
 
     enum TranscriptionStatus {
@@ -57,6 +61,8 @@ class TranscriptionViewModel: ObservableObject {
         status = .transcribing
         progress = 0.0
         errorMessage = nil
+        currentAudioURL = audioURL
+        lastNotifiedProgress = -1.0
 
         AppLogger.transcription.info("Starting transcription for: \(audioURL.lastPathComponent)")
 
@@ -89,6 +95,8 @@ class TranscriptionViewModel: ObservableObject {
         // TODO: キャンセル機能の実装（必要に応じて）
         status = .idle
         progress = 0.0
+        currentAudioURL = nil
+        lastNotifiedProgress = -1.0
         AppLogger.transcription.info("Transcription cancelled")
     }
 
@@ -98,7 +106,28 @@ class TranscriptionViewModel: ObservableObject {
         transcriptionService.transcriptionProgress
             .receive(on: DispatchQueue.main)
             .sink { [weak self] progress in
-                self?.progress = progress
+                guard let self = self else { return }
+
+                // UI更新（常に）
+                self.progress = progress
+
+                // 進捗通知の送信判定
+                // 1. 開始時（0%）
+                // 2. 5%以上変化した場合（頻度制限）
+                // 3. 完了時（100%）
+                let progressDelta = abs(progress - self.lastNotifiedProgress)
+
+                if progress == 0.0 || progress == 1.0 || progressDelta >= 0.05 {
+                    if let audioURL = self.currentAudioURL {
+                        Task {
+                            await self.notificationService.sendTranscriptionProgress(
+                                fileName: audioURL.lastPathComponent,
+                                progress: progress
+                            )
+                        }
+                        self.lastNotifiedProgress = progress
+                    }
+                }
             }
             .store(in: &cancellables)
     }

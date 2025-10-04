@@ -17,7 +17,7 @@ struct AudioSettings: Codable, Equatable {
         sampleRate: .rate44_1kHz,
         bitDepth: .bit16,
         channels: .mono,
-        whisperModel: .medium
+        whisperModel: .distilLargeV3
     )
 
     // AVFoundation用の変換プロパティ
@@ -64,13 +64,29 @@ struct AudioSettings: Codable, Equatable {
     }
 
     enum WhisperModel: String, Codable, CaseIterable {
-        case small
-        case medium
+        // WhisperKitの推奨する短い形式のモデル名を使用
+        // これにより、HuggingFaceリポジトリでの曖昧性エラーを回避
+        case small = "small"
+        case medium = "medium"
+        case distilLargeV3 = "distil-large-v3"
+        case largeV3 = "large-v3"
 
         var displayName: String {
             switch self {
-            case .small: return "Small (軽量・高速)"
-            case .medium: return "Medium (高精度)"
+            case .small: return "Small (216MB・軽量)"
+            case .medium: return "Medium (500MB・標準)"
+            case .distilLargeV3: return "Distil Large-v3 (594MB・高精度・推奨)"
+            case .largeV3: return "Large-v3 (947MB・最高精度)"
+            }
+        }
+
+        /// ユーザー表示用の簡潔な名前
+        var shortName: String {
+            switch self {
+            case .small: return "small"
+            case .medium: return "medium"
+            case .distilLargeV3: return "distil-large-v3"
+            case .largeV3: return "large-v3"
             }
         }
     }
