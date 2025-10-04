@@ -49,16 +49,29 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK: - Setup
 
     private func checkPermissions() {
-        PermissionsManager.shared.requestMicrophonePermission { granted in
+        PermissionsManager.shared.requestMicrophonePermission { [weak self] granted in
             if !granted {
                 DispatchQueue.main.async {
-                    let alert = NSAlert()
-                    alert.messageText = "マイクへのアクセスが必要です"
-                    alert.informativeText = "VoiceCaptureは録音機能のためにマイクへのアクセスが必要です。システム環境設定でマイクへのアクセスを許可してください。"
-                    alert.alertStyle = .warning
-                    alert.addButton(withTitle: "OK")
-                    alert.runModal()
+                    self?.showMicrophonePermissionAlert()
                 }
+            }
+        }
+    }
+
+    private func showMicrophonePermissionAlert() {
+        let alert = NSAlert()
+        alert.messageText = "マイクへのアクセスが必要です"
+        alert.informativeText = "VoiceCaptureは録音機能のためにマイクへのアクセスが必要です。システム設定でマイクへのアクセスを許可してください。"
+        alert.alertStyle = .warning
+        alert.addButton(withTitle: "システム設定を開く")
+        alert.addButton(withTitle: "後で")
+
+        let response = alert.runModal()
+
+        if response == .alertFirstButtonReturn {
+            // システム設定のプライバシー > マイクを開く
+            if let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Microphone") {
+                NSWorkspace.shared.open(url)
             }
         }
     }
@@ -137,7 +150,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     // TODO: KeyboardShortcuts SPM追加後にコメント解除
-    
+
     private func setupKeyboardShortcuts() {
         KeyboardShortcuts.onKeyUp(for: .toggleRecording) { [weak self] in
             Task { @MainActor in
@@ -145,7 +158,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
     }
-    
+
 
     private func setupMenuBar() {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
@@ -234,6 +247,45 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let iconName = isRecording ? "mic.circle.fill" : "mic.fill"
         button.image = NSImage(systemSymbolName: iconName, accessibilityDescription: "VoiceCapture")
         button.image?.isTemplate = true
+
+        // アニメーションの追加・削除
+        if isRecording {
+            startPulseAnimation(on: button)
+        } else {
+            stopPulseAnimation(on: button)
+        }
+    }
+
+    private func startPulseAnimation(on button: NSStatusBarButton) {
+        // 既存のアニメーションがあれば削除
+        button.layer?.removeAllAnimations()
+
+        // レイヤーアニメーションを有効化
+        button.wantsLayer = true
+
+        // パルスアニメーション作成
+        let pulseAnimation = CABasicAnimation(keyPath: "opacity")
+        pulseAnimation.duration = 1.0
+        pulseAnimation.fromValue = 1.0
+        pulseAnimation.toValue = 0.4
+        pulseAnimation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        pulseAnimation.autoreverses = true
+        pulseAnimation.repeatCount = .infinity
+
+        // アニメーション適用
+        button.layer?.add(pulseAnimation, forKey: "pulseAnimation")
+
+        AppLogger.recording.debug("Pulse animation started")
+    }
+
+    private func stopPulseAnimation(on button: NSStatusBarButton) {
+        // アニメーション削除
+        button.layer?.removeAnimation(forKey: "pulseAnimation")
+
+        // 不透明度を元に戻す
+        button.layer?.opacity = 1.0
+
+        AppLogger.recording.debug("Pulse animation stopped")
     }
 
     private func updateMenuItems(isRecording: Bool) {

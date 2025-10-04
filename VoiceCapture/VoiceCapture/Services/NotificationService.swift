@@ -8,6 +8,7 @@
 import Foundation
 import UserNotifications
 import AppKit
+import AVFoundation
 
 class NotificationService: NSObject, NotificationServiceProtocol {
     // MARK: - Initialization
@@ -15,6 +16,7 @@ class NotificationService: NSObject, NotificationServiceProtocol {
     override init() {
         super.init()
         requestAuthorization()
+        setupNotificationCategories()
         UNUserNotificationCenter.current().delegate = self
     }
 
@@ -30,30 +32,81 @@ class NotificationService: NSObject, NotificationServiceProtocol {
         }
     }
 
-    // MARK: - NotificationServiceProtocol
+    // MARK: - Notification Categories Setup
 
-    func sendRecordingComplete(fileName: String) async {
-        let content = UNMutableNotificationContent()
-        content.title = "録音完了"
-        content.body = "ファイル: \(fileName)"
-        content.sound = .default
-        content.userInfo = ["type": "recording", "fileName": fileName]
+    private func setupNotificationCategories() {
+        let recordingCategory = createRecordingCompleteCategory()
+        let transcriptionCategory = createTranscriptionCompleteCategory()
 
-        // アクション追加
-        let openAction = UNNotificationAction(
-            identifier: "OPEN_FILE",
+        UNUserNotificationCenter.current().setNotificationCategories([
+            recordingCategory,
+            transcriptionCategory
+        ])
+    }
+
+    private func createRecordingCompleteCategory() -> UNNotificationCategory {
+        let openInFinderAction = UNNotificationAction(
+            identifier: "OPEN_IN_FINDER",
             title: "Finderで開く",
             options: .foreground
         )
 
-        let category = UNNotificationCategory(
+        let deleteAction = UNNotificationAction(
+            identifier: "DELETE_RECORDING",
+            title: "削除",
+            options: [.destructive]
+        )
+
+        return UNNotificationCategory(
             identifier: "RECORDING_COMPLETE",
-            actions: [openAction],
+            actions: [openInFinderAction, deleteAction],
             intentIdentifiers: [],
             options: .customDismissAction
         )
+    }
 
-        UNUserNotificationCenter.current().setNotificationCategories([category])
+    private func createTranscriptionCompleteCategory() -> UNNotificationCategory {
+        let openFileAction = UNNotificationAction(
+            identifier: "OPEN_TRANSCRIPTION",
+            title: "ファイルを開く",
+            options: .foreground
+        )
+
+        let openInFinderAction = UNNotificationAction(
+            identifier: "OPEN_IN_FINDER",
+            title: "Finderで表示",
+            options: .foreground
+        )
+
+        let deleteAction = UNNotificationAction(
+            identifier: "DELETE_TRANSCRIPTION",
+            title: "削除",
+            options: [.destructive]
+        )
+
+        return UNNotificationCategory(
+            identifier: "TRANSCRIPTION_COMPLETE",
+            actions: [openFileAction, openInFinderAction, deleteAction],
+            intentIdentifiers: [],
+            options: .customDismissAction
+        )
+    }
+
+    // MARK: - NotificationServiceProtocol
+
+    func sendRecordingComplete(fileName: String) async {
+        let fileURL = SettingsManager.shared.saveDirectory.appendingPathComponent(fileName)
+        let fileInfo = getFileInfo(at: fileURL)
+
+        let content = UNMutableNotificationContent()
+        content.title = "録音完了"
+        content.body = formatRecordingNotificationBody(fileName: fileName, fileInfo: fileInfo)
+        content.sound = .default
+        content.userInfo = [
+            "type": "recording",
+            "fileName": fileName,
+            "filePath": fileURL.path
+        ]
         content.categoryIdentifier = "RECORDING_COMPLETE"
 
         let request = UNNotificationRequest(
@@ -64,32 +117,25 @@ class NotificationService: NSObject, NotificationServiceProtocol {
 
         do {
             try await UNUserNotificationCenter.current().add(request)
+            AppLogger.recording.info("Recording complete notification sent: \(fileName)")
         } catch {
             AppLogger.recording.error("Failed to send notification: \(error.localizedDescription)")
         }
     }
 
     func sendTranscriptionComplete(fileName: String) async {
+        let fileURL = SettingsManager.shared.saveDirectory.appendingPathComponent(fileName)
+        let fileInfo = getFileInfo(at: fileURL)
+
         let content = UNMutableNotificationContent()
         content.title = "文字起こし完了"
-        content.body = "ファイル: \(fileName)"
+        content.body = formatTranscriptionNotificationBody(fileName: fileName, fileInfo: fileInfo)
         content.sound = .default
-        content.userInfo = ["type": "transcription", "fileName": fileName]
-
-        let openAction = UNNotificationAction(
-            identifier: "OPEN_FILE",
-            title: "ファイルを開く",
-            options: .foreground
-        )
-
-        let category = UNNotificationCategory(
-            identifier: "TRANSCRIPTION_COMPLETE",
-            actions: [openAction],
-            intentIdentifiers: [],
-            options: .customDismissAction
-        )
-
-        UNUserNotificationCenter.current().setNotificationCategories([category])
+        content.userInfo = [
+            "type": "transcription",
+            "fileName": fileName,
+            "filePath": fileURL.path
+        ]
         content.categoryIdentifier = "TRANSCRIPTION_COMPLETE"
 
         let request = UNNotificationRequest(
@@ -100,6 +146,7 @@ class NotificationService: NSObject, NotificationServiceProtocol {
 
         do {
             try await UNUserNotificationCenter.current().add(request)
+            AppLogger.transcription.info("Transcription complete notification sent: \(fileName)")
         } catch {
             AppLogger.transcription.error("Failed to send notification: \(error.localizedDescription)")
         }
@@ -123,6 +170,95 @@ class NotificationService: NSObject, NotificationServiceProtocol {
             AppLogger.recording.error("Failed to send error notification: \(error.localizedDescription)")
         }
     }
+
+    // MARK: - Helper Methods
+
+    private func getFileInfo(at url: URL) -> FileInfo {
+        guard FileManager.default.fileExists(atPath: url.path) else {
+            return FileInfo(size: nil, duration: nil, creationDate: nil)
+        }
+
+        do {
+            let attributes = try FileManager.default.attributesOfItem(atPath: url.path)
+            let size = attributes[.size] as? Int64
+            let creationDate = attributes[.creationDate] as? Date
+
+            // 音声ファイルの場合、時間情報を取得（簡易実装）
+            var duration: TimeInterval?
+            if url.pathExtension == "m4a" || url.pathExtension == "wav" || url.pathExtension == "mp3" {
+                duration = getAudioDuration(at: url)
+            }
+
+            return FileInfo(size: size, duration: duration, creationDate: creationDate)
+        } catch {
+            AppLogger.recording.error("Failed to get file info: \(error.localizedDescription)")
+            return FileInfo(size: nil, duration: nil, creationDate: nil)
+        }
+    }
+
+    private func getAudioDuration(at url: URL) -> TimeInterval? {
+        // AVFoundationを使用して音声ファイルの長さを取得
+        let asset = AVURLAsset(url: url)
+
+        // 同期的にdurationを取得（非推奨だが同期関数のため使用）
+        // Note: asset.durationはmacOS 13.0で非推奨だが、
+        // 通知の軽量な処理のため同期的に取得する
+        let duration = asset.duration
+        guard duration.isValid && !duration.isIndefinite else {
+            return nil
+        }
+
+        return CMTimeGetSeconds(duration)
+    }
+
+    private func formatRecordingNotificationBody(fileName: String, fileInfo: FileInfo) -> String {
+        var parts: [String] = []
+
+        if let duration = fileInfo.duration {
+            let minutes = Int(duration) / 60
+            let seconds = Int(duration) % 60
+            parts.append("録音時間: \(String(format: "%d:%02d", minutes, seconds))")
+        }
+
+        if let size = fileInfo.size {
+            parts.append("サイズ: \(formatFileSize(size))")
+        }
+
+        if parts.isEmpty {
+            return "ファイル: \(fileName)"
+        } else {
+            return parts.joined(separator: " | ")
+        }
+    }
+
+    private func formatTranscriptionNotificationBody(fileName: String, fileInfo: FileInfo) -> String {
+        var parts: [String] = []
+
+        if let size = fileInfo.size {
+            // テキストファイルの場合、文字数を推定
+            let estimatedCharacters = size / 3 // 1文字あたり約3バイトと仮定
+            parts.append("約\(estimatedCharacters)文字")
+        }
+
+        parts.append("ファイル: \(fileName)")
+
+        return parts.joined(separator: " | ")
+    }
+
+    private func formatFileSize(_ bytes: Int64) -> String {
+        let formatter = ByteCountFormatter()
+        formatter.allowedUnits = [.useKB, .useMB]
+        formatter.countStyle = .file
+        return formatter.string(fromByteCount: bytes)
+    }
+
+    // MARK: - Nested Types
+
+    private struct FileInfo {
+        let size: Int64?
+        let duration: TimeInterval?
+        let creationDate: Date?
+    }
 }
 
 // MARK: - UNUserNotificationCenterDelegate
@@ -136,10 +272,42 @@ extension NotificationService: UNUserNotificationCenterDelegate {
         let userInfo = response.notification.request.content.userInfo
 
         switch response.actionIdentifier {
-        case "OPEN_FILE":
-            if let fileName = userInfo["fileName"] as? String {
-                openFile(fileName: fileName, type: userInfo["type"] as? String ?? "")
+        case "OPEN_IN_FINDER":
+            if let filePath = userInfo["filePath"] as? String {
+                let fileURL = URL(fileURLWithPath: filePath)
+                NSWorkspace.shared.selectFile(
+                    fileURL.path,
+                    inFileViewerRootedAtPath: fileURL.deletingLastPathComponent().path
+                )
             }
+
+        case "OPEN_TRANSCRIPTION":
+            if let filePath = userInfo["filePath"] as? String {
+                let fileURL = URL(fileURLWithPath: filePath)
+                NSWorkspace.shared.open(fileURL)
+            }
+
+        case "DELETE_RECORDING", "DELETE_TRANSCRIPTION":
+            if let filePath = userInfo["filePath"] as? String {
+                deleteFile(at: filePath)
+            }
+
+        case UNNotificationDefaultActionIdentifier:
+            // 通知をクリックした場合のデフォルト動作
+            if let filePath = userInfo["filePath"] as? String,
+               let type = userInfo["type"] as? String {
+                let fileURL = URL(fileURLWithPath: filePath)
+
+                if type == "transcription" {
+                    NSWorkspace.shared.open(fileURL)
+                } else {
+                    NSWorkspace.shared.selectFile(
+                        fileURL.path,
+                        inFileViewerRootedAtPath: fileURL.deletingLastPathComponent().path
+                    )
+                }
+            }
+
         default:
             break
         }
@@ -155,14 +323,57 @@ extension NotificationService: UNUserNotificationCenterDelegate {
         completionHandler([.banner, .sound])
     }
 
-    private func openFile(fileName: String, type: String) {
-        let saveDirectory = SettingsManager.shared.saveDirectory
-        let fileURL = saveDirectory.appendingPathComponent(fileName)
+    private func deleteFile(at path: String) {
+        let fileURL = URL(fileURLWithPath: path)
 
-        if type == "transcription" {
-            NSWorkspace.shared.open(fileURL)
-        } else {
-            NSWorkspace.shared.selectFile(fileURL.path, inFileViewerRootedAtPath: saveDirectory.path)
+        // 削除確認アラート
+        let alert = NSAlert()
+        alert.messageText = "ファイルを削除しますか？"
+        alert.informativeText = "「\(fileURL.lastPathComponent)」を削除します。この操作は取り消せません。"
+        alert.alertStyle = .warning
+        alert.addButton(withTitle: "削除")
+        alert.addButton(withTitle: "キャンセル")
+
+        let response = alert.runModal()
+
+        if response == .alertFirstButtonReturn {
+            do {
+                try FileManager.default.removeItem(at: fileURL)
+                AppLogger.recording.info("File deleted: \(fileURL.lastPathComponent)")
+
+                // 削除成功の通知
+                Task {
+                    await sendDeletionConfirmation(fileName: fileURL.lastPathComponent)
+                }
+            } catch {
+                AppLogger.recording.error("Failed to delete file: \(error.localizedDescription)")
+
+                // 削除失敗のアラート
+                let errorAlert = NSAlert()
+                errorAlert.messageText = "削除に失敗しました"
+                errorAlert.informativeText = error.localizedDescription
+                errorAlert.alertStyle = .critical
+                errorAlert.runModal()
+            }
+        }
+    }
+
+    private func sendDeletionConfirmation(fileName: String) async {
+        let content = UNMutableNotificationContent()
+        content.title = "ファイル削除完了"
+        content.body = "「\(fileName)」を削除しました"
+        content.sound = .default
+
+        let request = UNNotificationRequest(
+            identifier: UUID().uuidString,
+            content: content,
+            trigger: nil
+        )
+
+        do {
+            try await UNUserNotificationCenter.current().add(request)
+        } catch {
+            AppLogger.recording.error("Failed to send deletion confirmation: \(error.localizedDescription)")
         }
     }
 }

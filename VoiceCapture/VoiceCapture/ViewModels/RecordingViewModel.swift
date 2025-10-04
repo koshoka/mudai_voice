@@ -37,6 +37,7 @@ class RecordingViewModel: ObservableObject {
 
     private var timer: Timer?
     private var audioLevelCancellable: AnyCancellable?
+    private var cancellables = Set<AnyCancellable>()
 
     // MARK: - Initialization
 
@@ -48,6 +49,8 @@ class RecordingViewModel: ObservableObject {
         self.fileStorageService = fileStorageService
         self.notificationService = notificationService
         self.transcriptionViewModel = transcriptionViewModel
+
+        observeTranscriptionState()
     }
 
     // MARK: - Public Methods
@@ -62,7 +65,11 @@ class RecordingViewModel: ObservableObject {
 
     func openLastRecording() async {
         guard let url = lastRecordingURL else {
-            errorMessage = "録音ファイルが見つかりません"
+            showErrorAlert(
+                title: "録音ファイルが見つかりません",
+                message: "まだ録音を行っていないか、ファイルが削除されています。",
+                suggestion: "新しい録音を開始してください。"
+            )
             return
         }
 
@@ -71,7 +78,11 @@ class RecordingViewModel: ObservableObject {
 
     func openLastTranscription() async {
         guard let url = lastTranscriptionURL else {
-            errorMessage = "文字起こしファイルが見つかりません"
+            showErrorAlert(
+                title: "文字起こしファイルが見つかりません",
+                message: "まだ文字起こしを行っていないか、ファイルが削除されています。",
+                suggestion: "録音を行い、自動文字起こしを有効にするか、手動で文字起こしを実行してください。"
+            )
             return
         }
 
@@ -149,14 +160,62 @@ class RecordingViewModel: ObservableObject {
     private func handleError(_ error: Error) {
         AppLogger.recording.error("Recording error: \(error.localizedDescription)")
 
-        if let vcError = error as? VoiceCaptureError {
-            errorMessage = vcError.localizedDescription
-        } else {
-            errorMessage = "録音エラーが発生しました"
-        }
-
         isRecording = false
         stopTimer()
         stopAudioLevelMonitoring()
+
+        if let vcError = error as? VoiceCaptureError {
+            errorMessage = vcError.localizedDescription
+            showDetailedErrorAlert(for: vcError)
+        } else {
+            errorMessage = "録音エラーが発生しました"
+            showErrorAlert(
+                title: "録音エラー",
+                message: error.localizedDescription,
+                suggestion: "問題が解決しない場合は、アプリを再起動してください。"
+            )
+        }
+    }
+
+    private func showDetailedErrorAlert(for error: VoiceCaptureError) {
+        let alert = NSAlert()
+        alert.messageText = error.errorDescription ?? "エラーが発生しました"
+        alert.informativeText = [error.failureReason, error.recoverySuggestion]
+            .compactMap { $0 }
+            .joined(separator: "\n\n")
+        alert.alertStyle = .warning
+
+        // パーミッションエラーの場合はシステム設定を開くボタンを追加
+        if case .permissionDenied = error {
+            alert.addButton(withTitle: "システム設定を開く")
+            alert.addButton(withTitle: "キャンセル")
+
+            let response = alert.runModal()
+            if response == .alertFirstButtonReturn {
+                if let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Microphone") {
+                    NSWorkspace.shared.open(url)
+                }
+            }
+        } else {
+            alert.addButton(withTitle: "OK")
+            alert.runModal()
+        }
+    }
+
+    private func showErrorAlert(title: String, message: String, suggestion: String) {
+        let alert = NSAlert()
+        alert.messageText = title
+        alert.informativeText = "\(message)\n\n\(suggestion)"
+        alert.alertStyle = .informational
+        alert.addButton(withTitle: "OK")
+        alert.runModal()
+    }
+
+    private func observeTranscriptionState() {
+        transcriptionViewModel.$lastTranscriptionURL
+            .sink { [weak self] url in
+                self?.lastTranscriptionURL = url
+            }
+            .store(in: &cancellables)
     }
 }
